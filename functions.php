@@ -12,6 +12,8 @@ function scripts_and_styles_method() {
 
   /* enqueue stylesheet here. file does not exist until stylus file is processed */
     wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/site.css' );
+    
+    if (is_admin()){wp_enqueue_style( 'dashicons' );}
 
 
 }

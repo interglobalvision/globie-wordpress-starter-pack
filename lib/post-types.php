@@ -1,4 +1,20 @@
 <?php
+// Menu icons for Custom Post Types
+function add_menu_icons_styles(){
+?>
+ 
+<style>
+#adminmenu .menu-icon-project div.wp-menu-image:before {
+    content: '\f498';
+}
+</style>
+ 
+<?php
+}
+add_action( 'admin_head', 'add_menu_icons_styles' );
+
+
+//Register Custom Post Types
 add_action( 'init', 'register_cpt_project' );
 
 function register_cpt_project() {
@@ -41,4 +57,3 @@ function register_cpt_project() {
 
     register_post_type( 'project', $args );
 }
-?>
