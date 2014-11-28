@@ -1,18 +1,5 @@
 <?php
-function my_scripts_method() {
-
-    /*
-    jquery loaded from cdn.js in footer.php with a local failsafe. or you can enqueue here:
-
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-    wp_enqueue_script('jquery','','','',true);
-    */
-
-    /*
-  wordpress includes quite a few js libs by default, here is the ui draggable
-  wp_enqueue_script( 'jquery-ui-draggable','','','',true );
-  */
+function scripts_and_styles_method() {
 
     $templateuri = get_template_directory_uri() . '/js/';
 
@@ -26,14 +13,9 @@ function my_scripts_method() {
   /* enqueue stylesheet here. file does not exist until stylus file is processed */
     wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/site.css' );
 
-  /*
-  if you are not using stylus delete the site enqueue and uncomment these:
-  wp_enqueue_style( 'style', get_stylesheet_uri() );
-    wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/resets.css' );
-  */
 
 }
-add_action('wp_enqueue_scripts', 'my_scripts_method');
+add_action('wp_enqueue_scripts', 'scripts_and_styles_method');
 
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
@@ -44,6 +26,11 @@ if ( function_exists( 'add_image_size' ) ) {
   add_image_size( 'name', 199, 299, true );
 }
 
+/*
+register_nav_menus( array(
+	'menu_location' => 'Location Name',
+) );
+*/
 
 /*
 override wp default gallery
@@ -84,4 +71,25 @@ function new_display_post_thumbnail_column($col, $id){
     break;
   }
 }
+
+// Utility Functions //
+// get ID of page by slug 
+function get_id_by_slug($page_slug) {
+	$page = get_page_by_path($page_slug);
+	if ($page) {
+		return $page->ID;
+	} else {
+		return null;
+	}
+}
+
+// remove <a> links from images in blog 
+function wpb_imagelink_setup() {
+	$image_set = get_option( 'image_default_link_type' );
+	
+	if ($image_set !== 'none') {
+		update_option('image_default_link_type', 'none');
+	}
+}
+add_action('admin_init', 'wpb_imagelink_setup', 10);
 ?>
