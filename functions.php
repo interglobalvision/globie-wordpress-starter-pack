@@ -1,61 +1,61 @@
 <?php
 function scripts_and_styles_method() {
 
-    $templateuri = get_template_directory_uri() . '/js/';
+  $templateuri = get_template_directory_uri() . '/js/';
 
-  /* lib.js is to bundle plugins. my.js is your scripts. enqueue more files as needed */
+  // library.js is to bundle plugins. my.js is your scripts. enqueue more files as needed
+  $jslib = $templateuri."library.js";
+  wp_enqueue_script( 'jslib', $jslib,'','',true);
+  $myscripts = $templateuri."my.js";
+  wp_enqueue_script( 'myscripts', $myscripts,'','',true);
 
-    $jslib = $templateuri."lib.js";
-    wp_enqueue_script( 'jslib', $jslib,'','',true);
-    $myscripts = $templateuri."my.min.js";
-    wp_enqueue_script( 'myscripts', $myscripts,'','',true);
+  // enqueue stylesheet here. file does not exist until stylus file is processed
+  wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/site.css' );
 
-  /* enqueue stylesheet here. file does not exist until stylus file is processed */
-    wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/site.css' );
-    
-    if (is_admin()){wp_enqueue_style( 'dashicons' );}
-
+  // dashicons for admin
+  if (is_admin()){
+    wp_enqueue_style( 'dashicons' );
+  }
 
 }
 add_action('wp_enqueue_scripts', 'scripts_and_styles_method');
 
 if ( function_exists( 'add_theme_support' ) ) {
-    add_theme_support( 'post-thumbnails' );
+  add_theme_support( 'post-thumbnails' );
 }
+
 if ( function_exists( 'add_image_size' ) ) {
   add_image_size( 'admin-thumb', 150, 150, false );
   add_image_size( 'opengraph', 400, 300, true );
+
   add_image_size( 'name', 199, 299, true );
 }
 
+// Register Nav Menus
 /*
 register_nav_menus( array(
 	'menu_location' => 'Location Name',
 ) );
 */
 
-/*
-override wp default gallery
 get_template_part( 'lib/gallery' );
-*/
-
 get_template_part( 'lib/post-types' );
 get_template_part( 'lib/meta-boxes' );
 
 add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
 function cmb_initialize_cmb_meta_boxes() {
-
   if ( ! class_exists( 'cmb_Meta_Box' ) )
     require_once 'lib/metabox/init.php';
-
 }
 
-/* disable that freaking admin bar */
+// Disable that freaking admin bar
 add_filter('show_admin_bar', '__return_false');
-/* turn off version in meta */
+
+// Turn off version in meta
 function no_generator() { return ''; }
 add_filter( 'the_generator', 'no_generator' );
-/* show thumbnails in admin lists */
+
+// Show thumbnails in admin lists
 add_filter('manage_posts_columns', 'new_add_post_thumbnail_column');
 function new_add_post_thumbnail_column($cols){
   $cols['new_post_thumb'] = __('Thumbnail');
@@ -74,8 +74,18 @@ function new_display_post_thumbnail_column($col, $id){
   }
 }
 
-// Utility Functions //
-// get ID of page by slug 
+// remove automatic <a> links from images in blog
+function wpb_imagelink_setup() {
+	$image_set = get_option( 'image_default_link_type' );
+	if ($image_set !== 'none') {
+		update_option('image_default_link_type', 'none');
+	}
+}
+add_action('admin_init', 'wpb_imagelink_setup', 10);
+
+// UTILITY FUNCTIONS
+
+// get ID of page by slug
 function get_id_by_slug($page_slug) {
 	$page = get_page_by_path($page_slug);
 	if ($page) {
@@ -85,13 +95,4 @@ function get_id_by_slug($page_slug) {
 	}
 }
 
-// remove <a> links from images in blog 
-function wpb_imagelink_setup() {
-	$image_set = get_option( 'image_default_link_type' );
-	
-	if ($image_set !== 'none') {
-		update_option('image_default_link_type', 'none');
-	}
-}
-add_action('admin_init', 'wpb_imagelink_setup', 10);
 ?>
