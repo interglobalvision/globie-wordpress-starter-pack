@@ -1,4 +1,21 @@
 <?php
+
+/* Get post objects for select field options */ 
+function get_post_objects( $query_args ) {
+$args = wp_parse_args( $query_args, array(
+    'post_type' => 'post',
+) );
+$posts = get_posts( $args );
+$post_options = array();
+if ( $posts ) {
+    foreach ( $posts as $post ) {
+        $post_options [ $post->ID ] = $post->post_title;
+    }
+}
+return $post_options;
+}
+
+
 /**
  * Include and setup custom metaboxes and fields.
  *
@@ -11,7 +28,7 @@
 
 function cmb_sample_metaboxes( array $meta_boxes ) {
 
-	$prefix = '_cmb_';
+	$prefix = '_igv_';
 
 	$meta_boxes['test_metabox'] = array(
 		'id'         => 'test_metabox',
