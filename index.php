@@ -29,7 +29,19 @@
     <?php if (get_next_posts_link() || get_previous_posts_link()) { ?>
     <!-- post pagination -->
     <nav id="pagination">
-      <?php if ($previous = get_previous_posts_link()) {echo $previous; } ?> <?php if ($next = get_next_posts_link()) {echo $next; } ?>
+      <?php
+              $previous = get_previous_posts_link('older');
+              $next = get_next_posts_link('newer');
+              if ($previous) {
+                echo $previous;
+              }
+              if ($previous && $next) {
+                echo ' - ';
+              }
+              if ($next) {
+                echo $next;
+              }
+      ?>
     </nav>
     <?php } ?>
 
