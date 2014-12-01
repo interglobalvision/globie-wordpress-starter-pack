@@ -2,7 +2,7 @@
 
 <!-- main content -->
 
-<section id="main-content">
+<main id="main-content">
 
   <!-- main posts loop -->
   <section id="posts">
@@ -46,6 +46,6 @@
 
 <!-- end main-content -->
 
-</section>
+</main>
 
 <?php get_footer(); ?>
