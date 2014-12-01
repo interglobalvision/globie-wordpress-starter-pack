@@ -1,4 +1,4 @@
-<footer id="footer">
+    <footer id="footer">
     </footer>
 
   </section>
@@ -6,7 +6,7 @@
   <section id="scripts">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery-2.1.1.min.js"><\/script>')</script>
-<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
   </section>
   </body>
 </html>
