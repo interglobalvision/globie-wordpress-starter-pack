@@ -13,18 +13,18 @@ function scripts_and_styles_method() {
   wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/site.css' );
 
   // dashicons for admin
-  if (is_admin()){
+  if(is_admin()){
     wp_enqueue_style( 'dashicons' );
   }
 
 }
 add_action('wp_enqueue_scripts', 'scripts_and_styles_method');
 
-if ( function_exists( 'add_theme_support' ) ) {
+if( function_exists( 'add_theme_support' ) ) {
   add_theme_support( 'post-thumbnails' );
 }
 
-if ( function_exists( 'add_image_size' ) ) {
+if( function_exists( 'add_image_size' ) ) {
   add_image_size( 'admin-thumb', 150, 150, false );
   add_image_size( 'opengraph', 1200, 630, true );
 
@@ -44,7 +44,7 @@ get_template_part( 'lib/meta-boxes' );
 
 add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
 function cmb_initialize_cmb_meta_boxes() {
-  if ( ! class_exists( 'cmb_Meta_Box' ) )
+  if( ! class_exists( 'cmb_Meta_Box' ) )
     require_once 'lib/metabox/init.php';
 }
 
@@ -77,7 +77,7 @@ function new_display_post_thumbnail_column($col, $id){
 // remove automatic <a> links from images in blog
 function wpb_imagelink_setup() {
 	$image_set = get_option( 'image_default_link_type' );
-	if ($image_set !== 'none') {
+	if($image_set !== 'none') {
 		update_option('image_default_link_type', 'none');
 	}
 }
@@ -88,7 +88,7 @@ add_action('admin_init', 'wpb_imagelink_setup', 10);
 // get ID of page by slug
 function get_id_by_slug($page_slug) {
 	$page = get_page_by_path($page_slug);
-	if ($page) {
+	if($page) {
 		return $page->ID;
 	} else {
 		return null;

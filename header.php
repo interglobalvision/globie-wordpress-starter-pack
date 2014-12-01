@@ -8,25 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="twitter:site" value="@">
-  <?php if (have_posts()):while(have_posts()):the_post();
+<?php if( have_posts() ) { while( have_posts() ) { the_post();
     $excerpt = get_the_excerpt();
     if(has_post_thumbnail()) {
       $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'opengraph' );
     }
-    endwhile; endif;
-    if (!empty($thumb)) {
-  ?>
+  }
+} ?>
+<?php if( !empty($thumb) ) { ?>
   <meta property="og:image" content="<?php echo $thumb['0'] ?>" />
-    <?php } else { ?>
+<?php } else { ?>
   <meta property="og:image" content="<?php bloginfo('stylesheet_directory'); ?>/img/favicon.png" />
-    <?php }
-    if (is_home()) { ?>
+<?php } ?>
+<?php if( is_home() ) { ?>
   <meta property="og:title" content="<?php bloginfo('name'); ?>" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
   <meta property="og:type" content="website" />
   <meta property="og:description" content="<?php bloginfo('description'); ?>" />
   <meta name="twitter:card" value="<?php bloginfo('description'); ?>">
-<?php } elseif (is_single()) { ?>
+<?php } elseif( is_single() ) { ?>
   <meta property="og:url" content="<?php the_permalink() ?>"/>
   <meta property="og:title" content="<?php single_post_title(''); ?>" />
   <meta property="og:description" content="<?php echo $excerpt ?>" />
@@ -55,21 +55,15 @@
     ]);
   </script>
 
-<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<?php wp_head(); ?>
+  <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+  <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p><![endif]-->
 
-<section id="main-container">
+  <section id="main-container">
 
-<!-- start content -->
-<header id="header">
-
-  <h1>
-    <a href="<?php echo home_url(); ?>">
-      <?php echo home_url(); ?>
-    </a>
-  </h1>
-
-</header>
+  <!-- start content -->
+  <header id="header">
+    <h1><a href="<?php echo home_url(); ?>"><?php echo home_url(); ?></a></h1>
+  </header>
