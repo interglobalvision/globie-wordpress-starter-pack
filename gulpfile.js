@@ -5,6 +5,10 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 
+var stylus = require('gulp-stylus');
+var concatCss = require('gulp-concat-css');
+var csslint = require('gulp-csslint');
+
 gulp.task('js', function() {
   gulp.src([
     'js/main.js',
@@ -29,6 +33,17 @@ gulp.task('js', function() {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('js'))
     .pipe(notify({ message: 'Js task complete' }));
+});
+
+gulp.task('style', function() {
+  gulp.src([
+    'css/reset.styl',
+    'css/site.styl',
+  ])
+    .pipe(stylus())
+    .pipe(concatCss('site.css'))
+    .pipe(csslint())
+    .pipe(gulp.dest('css'))
 });
 
 gulp.task('default', function() {
