@@ -10,25 +10,25 @@ gulp.task('js', function() {
     'js/main.js',
     'js/library.js'
   ])
-  .pipe(watch([
-    'js/main.js',
-    'js/library.js'
-  ]))
-  .pipe(jslint({
-    reporter: function (evt) {
-      var msg = ' ' + evt.file;
-      if (evt.pass) {
-          msg = '[PASS]' + msg;
-      } else {
-          msg = '[FAIL]' + msg;
+    .pipe(watch([
+      'js/main.js',
+      'js/library.js'
+    ]))
+    .pipe(jslint({
+      reporter: function (evt) {
+        var msg = ' ' + evt.file;
+        if (evt.pass) {
+            msg = '[PASS]' + msg;
+        } else {
+            msg = '[FAIL]' + msg;
+        }
+        console.log(msg);
       }
-      console.log(msg);
-    }
-  }))
-  .pipe(uglify())
-  .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('js'))
-  .pipe(notify({ message: 'Js task complete' }));
+    }))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('js'))
+    .pipe(notify({ message: 'Js task complete' }));
 });
 
 gulp.task('default', function() {
