@@ -40,6 +40,7 @@ gulp.task('style', function() {
     .pipe(concatCss('site.css'))
     .pipe(csslint())
     .pipe(gulp.dest('css'))
+    .pipe(notify({ message: 'Style task complete' }));
 });
 
 gulp.task('watch', function() {
