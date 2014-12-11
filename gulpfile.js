@@ -14,10 +14,6 @@ gulp.task('js', function() {
     'js/main.js',
     'js/library.js'
   ])
-    .pipe(watch([
-      'js/main.js',
-      'js/library.js'
-    ]))
     .pipe(jslint({
       reporter: function (evt) {
         var msg = ' ' + evt.file;
@@ -44,6 +40,11 @@ gulp.task('style', function() {
     .pipe(concatCss('site.css'))
     .pipe(csslint())
     .pipe(gulp.dest('css'))
+});
+
+gulp.task('watch', function() {
+  gulp.watch(['js/main.js'], ['js']);
+  gulp.watch(['css/site.styl'], ['style']);
 });
 
 gulp.task('default', function() {
