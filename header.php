@@ -82,5 +82,5 @@ if( is_home() ) {
 
   <!-- start content -->
   <header id="header">
-    <h1><a href="<?php echo home_url(); ?>"><?php echo home_url(); ?></a></h1>
+    <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
   </header>
