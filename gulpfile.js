@@ -48,6 +48,4 @@ gulp.task('watch', function() {
   gulp.watch(['css/site.styl'], ['style']);
 });
 
-gulp.task('default', function() {
-  // place code for your default task here
-});
+gulp.task('default', ['watch']);
