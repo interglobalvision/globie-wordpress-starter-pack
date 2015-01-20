@@ -6,7 +6,7 @@ function scripts_and_styles_method() {
   // library.js is to bundle plugins. my.js is your scripts. enqueue more files as needed
   $jslib = $templateuri."library.js";
   wp_enqueue_script( 'jslib', $jslib,'','',true);
-  $myscripts = $templateuri."my.js";
+  $myscripts = $templateuri."main.js";
   wp_enqueue_script( 'myscripts', $myscripts,'','',true);
 
   // enqueue stylesheet here. file does not exist until stylus file is processed
