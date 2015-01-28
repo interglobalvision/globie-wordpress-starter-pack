@@ -22,36 +22,29 @@ gulp.task('js', function() {
     'js/main.js',
     'js/library.js'
   ])
-    .pipe(jslint({
-      reporter: function (evt) {
-        var msg = ' ' + evt.file;
-        if (evt.pass) {
-            msg = '[PASS]' + msg;
-        } else {
-            msg = '[FAIL]' + msg;
-        }
-        console.log(msg);
-      }
-    }))
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('js'))
-    .pipe(notify({ message: 'Js task complete' }));
+  .pipe(jslint())
+  .on('error', function (error) {
+    console.error(String(error));
+  })
+  .pipe(uglify())
+  .pipe(rename({suffix: '.min'}))
+  .pipe(gulp.dest('js'))
+  .pipe(notify({ message: 'Js task complete' }));
 });
 
 gulp.task('style', function() {
   return gulp.src('css/site.styl')
-    .pipe(stylus())
-    .on('error', errorNotify)
-    .pipe(autoprefixer()
-    .on('error', errorNotify)
-//     .pipe(csslint())
-    .pipe(gulp.dest('css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
-    .on('error', errorNotify)
-    .pipe(gulp.dest('css'))
-    .pipe(notify({ message: 'Style task complete' }));
+  .pipe(stylus())
+  .on('error', errorNotify)
+  .pipe(autoprefixer())
+  .on('error', errorNotify)
+  //     .pipe(csslint())
+  .pipe(gulp.dest('css'))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(minifycss())
+  .on('error', errorNotify)
+  .pipe(gulp.dest('css'))
+  .pipe(notify({ message: 'Style task complete' }));
 });
 
 gulp.task('watch', function() {
