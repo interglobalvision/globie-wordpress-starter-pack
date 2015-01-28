@@ -12,6 +12,11 @@ var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 
+var jpegoptim = require('imagemin-jpegoptim');
+var pngquant = require('imagemin-pngquant');
+var optipng = require('imagemin-optipng');
+var svgo = require('imagemin-svgo');
+
 function errorNotify(error){
   notify.onError("Error: <%= error.message %>")
   util.log(util.colors.red('Error'), error.message);
@@ -47,9 +52,19 @@ gulp.task('style', function() {
   .pipe(notify({ message: 'Style task complete' }));
 });
 
+gulp.task('images', function () {
+  return gulp.src('img/src/**/*.{png,jpg,jpeg,gif,svg}')
+  .pipe(optipng({optimizationLevel: 3})())
+  .pipe(pngquant({quality: '65-80', speed: 4})())
+  .pipe(jpegoptim({max: 70})())
+  .pipe(svgo()())
+  .pipe(gulp.dest('img/dist'));
+});
+
 gulp.task('watch', function() {
   gulp.watch(['js/main.js'], ['js']);
   gulp.watch(['css/site.styl'], ['style']);
+  gulp.watch(['img/src/**'], ['images']);
 });
 
 gulp.task('default', ['watch']);
