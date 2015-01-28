@@ -6,7 +6,7 @@
   <title><?php wp_title('|',true,'right'); bloginfo('name'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <?php get_template_part('partials/', 'seo'); ?>
+  <?php get_template_part('partials/seo'); ?>
 
   <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
   <link rel="icon" href="<?php bloginfo('stylesheet_directory'); ?>/img/favicon.png">
