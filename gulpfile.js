@@ -27,10 +27,15 @@ gulp.task('js', function() {
     'js/main.js',
     'js/library.js'
   ])
-  .pipe(jslint())
-  .on('error', function (error) {
-    console.error(String(error));
-  })
+  .pipe(jslint({
+    browser: true,
+    white: true,
+    devel: true,
+    unparam: true,
+    global: ['$', 'jQuery'],
+    errorsOnly: true
+  }))
+  .on('error', errorNotify)
   .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest('js'))
