@@ -22,16 +22,22 @@ return $post_options;
  * @category YourThemeOrPlugin
  * @package  Metaboxes
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     https://github.com/webdevstudios/Custom-Metaboxes-and-Fields-for-WordPress
+ * @link     https://github.com/WebDevStudios/CMB2
  */
- add_filter( 'cmb_meta_boxes', 'cmb_sample_metaboxes' );
 
-function cmb_sample_metaboxes( array $meta_boxes ) {
+/**
+ * Hook in and add metaboxes. Can only happen on the 'cmb2_init' hook.
+ */
+add_action( 'cmb2_init', 'igv_cmb_metaboxxes' );
+function igv_cmb_metaboxes() {
 
+	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_igv_';
 
-	//Metaboxes
+	/**
+	 * Metaboxes declarations here
+   * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
+	 */
 
-	return $meta_boxes;
 }
 ?>
