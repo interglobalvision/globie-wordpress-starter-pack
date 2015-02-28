@@ -4,7 +4,7 @@ var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 var util = require('gulp-util');
 
-var jslint = require('gulp-jslint');
+var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 
 var stylus = require('gulp-stylus');
@@ -27,14 +27,13 @@ gulp.task('js', function() {
     'js/main.js',
     'js/library.js'
   ])
-  .pipe(jslint({
+  .pipe(jshint({
     browser: true,
     devel: true,
-    unparam: true,
+    unused: true,
     indent: 2,
-    global: ['$', 'jQuery'],
-    errorsOnly: true
   }))
+  .pipe(jshint.reporter('jshint-stylish'))
   .on('error', errorNotify)
   .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
