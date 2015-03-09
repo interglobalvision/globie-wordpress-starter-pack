@@ -28,7 +28,7 @@ return $post_options;
 /**
  * Hook in and add metaboxes. Can only happen on the 'cmb2_init' hook.
  */
-add_action( 'cmb2_init', 'igv_cmb_metaboxxes' );
+add_action( 'cmb2_init', 'igv_cmb_metaboxes' );
 function igv_cmb_metaboxes() {
 
 	// Start with an underscore to hide fields from custom fields list
