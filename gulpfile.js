@@ -1,21 +1,20 @@
 var gulp = require('gulp');
-var watch = require('gulp-watch');
-var rename = require('gulp-rename');
-var notify = require('gulp-notify');
-var util = require('gulp-util');
+  watch = require('gulp-watch'),
+  rename = require('gulp-rename'),
+  notify = require('gulp-notify'),
+  util = require('gulp-util'),
 
-var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');
+  jshint = require('gulp-jshint'),
+  uglify = require('gulp-uglify'),
+  sourcemaps = require('gulp-sourcemaps'),
 
-var stylus = require('gulp-stylus');
-// var csslint = require('gulp-csslint');
-var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
+  cache = require('gulp-cached'),
 
-var jpegoptim = require('imagemin-jpegoptim');
-var pngquant = require('imagemin-pngquant');
-var optipng = require('imagemin-optipng');
-var svgo = require('imagemin-svgo');
+  stylus = require('gulp-stylus'),
+  autoprefixer = require('gulp-autoprefixer'),
+  minifycss = require('gulp-minify-css'),
+
+  imagemin = require('gulp-imagemin');
 
 function errorNotify(error){
   notify.onError("Error: <%= error.message %>")
@@ -27,16 +26,13 @@ gulp.task('js', function() {
     'js/main.js',
     'js/library.js'
   ])
-  .pipe(jshint({
-    browser: true,
-    devel: true,
-    unused: true,
-    indent: 2,
-  }))
+  .pipe(sourcemaps.init())
+  .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
   .on('error', errorNotify)
   .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
+  .pipe(sourcemaps.write('/'))
   .pipe(gulp.dest('js'))
   .pipe(notify({ message: 'Js task complete' }));
 });
@@ -47,7 +43,6 @@ gulp.task('style', function() {
   .on('error', errorNotify)
   .pipe(autoprefixer())
   .on('error', errorNotify)
-  //     .pipe(csslint())
   .pipe(gulp.dest('css'))
   .pipe(rename({suffix: '.min'}))
   .pipe(minifycss())
@@ -57,12 +52,14 @@ gulp.task('style', function() {
 });
 
 gulp.task('images', function () {
-  return gulp.src('img/src/**/*.{png,jpg,jpeg,gif,svg}')
-  .pipe(optipng({optimizationLevel: 3})())
-  .pipe(pngquant({quality: '65-80', speed: 4})())
-  .pipe(jpegoptim({max: 70})())
-  .pipe(svgo()())
-  .pipe(gulp.dest('img/dist'));
+    return gulp.src('src/images/*.*')
+    .pipe(cache('images'))
+    .pipe(imagemin({
+      progressive: false
+    }))
+    .on('error', errorNotify)
+    .pipe(gulp.dest('img/dist'))
+		.pipe(notify({ message: 'Images task complete' }));
 });
 
 gulp.task('watch', function() {
