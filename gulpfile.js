@@ -3,6 +3,8 @@ var gulp = require('gulp');
   rename = require('gulp-rename'),
   notify = require('gulp-notify'),
   util = require('gulp-util'),
+  plumber = require('gulp-plumber'),
+  concat = require('gulp-concat'),
 
   jshint = require('gulp-jshint'),
   uglify = require('gulp-uglify'),
@@ -21,11 +23,8 @@ function errorNotify(error){
   util.log(util.colors.red('Error'), error.message);
 }
 
-gulp.task('js', function() {
-  gulp.src([
-    'js/main.js',
-    'js/library.js'
-  ])
+gulp.task('javascript', function() {
+  gulp.src('js/main.js')
   .pipe(sourcemaps.init())
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
@@ -34,11 +33,19 @@ gulp.task('js', function() {
   .pipe(rename({suffix: '.min'}))
   .pipe(sourcemaps.write('/'))
   .pipe(gulp.dest('js'))
-  .pipe(notify({ message: 'Js task complete' }));
+  .pipe(notify({ message: 'Javascript task complete' }));
+});
+
+gulp.task('javascript-library', function() {
+  gulp.src('js/library/*.js')
+  .pipe(concat('library.js'))
+  .pipe(gulp.dest('js'))
+  .pipe(notify({ message: 'Javascript Library task complete' }));
 });
 
 gulp.task('style', function() {
   return gulp.src('css/site.styl')
+  .pipe(plumber())
   .pipe(stylus())
   .on('error', errorNotify)
   .pipe(autoprefixer())
@@ -63,7 +70,8 @@ gulp.task('images', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['js/main.js'], ['js']);
+  gulp.watch(['js/main.js'], ['javascript']);
+  gulp.watch(['js/library/*.js'], ['javascript-library']);
   gulp.watch(['css/site.styl'], ['style']);
   gulp.watch(['img/src/**'], ['images']);
 });
