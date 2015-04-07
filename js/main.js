@@ -3,10 +3,10 @@
 
 function l(data) {
   'use strict';
-  console.log(l);
+  console.log(data);
 }
 
 jQuery(document).ready(function () {
   'use strict';
-  console.log('Hola Globie');
+  l('Hola Globie');
 });
