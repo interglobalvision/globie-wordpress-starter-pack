@@ -95,6 +95,19 @@ add_action( 'login_head', 'custom_login_logo' );
 
 // UTILITY FUNCTIONS
 
+// to replace file_get_contents
+function url_get_contents($Url) {
+  if (!function_exists('curl_init')){
+      die('CURL is not installed!');
+  }
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $Url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $output = curl_exec($ch);
+  curl_close($ch);
+  return $output;
+}
+
 // get ID of page by slug
 function get_id_by_slug($page_slug) {
 	$page = get_page_by_path($page_slug);
