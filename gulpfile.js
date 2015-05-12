@@ -7,6 +7,7 @@ var gulp = require('gulp');
   concat = require('gulp-concat'),
 
   jshint = require('gulp-jshint'),
+  jscs = require('gulp-jscs'),
   uglify = require('gulp-uglify'),
   sourcemaps = require('gulp-sourcemaps'),
 
@@ -28,6 +29,7 @@ gulp.task('javascript', function() {
   .pipe(sourcemaps.init())
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
+  .pipe(jscs('.jscsrc'))
   .pipe(uglify())
   .on('error', errorNotify)
   .pipe(rename({suffix: '.min'}))
