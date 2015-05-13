@@ -13,6 +13,12 @@ class IGV_Admin {
 	private $key = 'IGV_options';
 
 	/**
+ 	 * Option prefix
+ 	 * @var string
+ 	 */
+	private $prefix = '_igv_';
+
+	/**
  	 * Options page metabox id
  	 * @var string
  	 */
@@ -100,7 +106,7 @@ class IGV_Admin {
 		$cmb->add_field( array(
 			'name' => __( 'Test Text', 'IGV' ),
 			'desc' => __( 'field description (optional)', 'IGV' ),
-			'id'   => 'test_text',
+			'id'   => $this->prefix . 'test_text',
 			'type' => 'text',
 			'default' => 'Default Text',
 		) );
@@ -108,7 +114,7 @@ class IGV_Admin {
 		$cmb->add_field( array(
 			'name'    => __( 'Test Color Picker', 'IGV' ),
 			'desc'    => __( 'field description (optional)', 'IGV' ),
-			'id'      => 'test_colorpicker',
+			'id'      => $this->prefix . 'test_colorpicker',
 			'type'    => 'colorpicker',
 			'default' => '#bada55',
 		) );
