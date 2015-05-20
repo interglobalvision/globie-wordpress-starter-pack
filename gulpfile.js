@@ -30,6 +30,7 @@ gulp.task('javascript', function() {
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe(jscs('.jscsrc'))
+  .on('error', errorNotify)
   .pipe(uglify())
   .on('error', errorNotify)
   .pipe(rename({suffix: '.min'}))
