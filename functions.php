@@ -126,4 +126,11 @@ function is_single_type($type, $post) {
   }
 }
 
+// print var in <pre> tags
+function pr($var) {
+  echo '<pre>';
+  print_r($var);
+  echo '</pre>';
+}
+
 ?>
