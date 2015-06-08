@@ -1,6 +1,6 @@
 <?php
 
-/* Get post objects for select field options */ 
+/* Get post objects for select field options */
 function get_post_objects( $query_args ) {
 $args = wp_parse_args( $query_args, array(
     'post_type' => 'post',
