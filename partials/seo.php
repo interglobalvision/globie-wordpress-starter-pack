@@ -32,7 +32,7 @@ if( is_home() ) {
 ?>
   <meta property="og:url" content="<?php the_permalink() ?>"/>
   <meta property="og:title" content="<?php single_post_title(''); ?>" />
-  <meta property="og:description" content="<?php echo $excerpt ?>" />
+  <meta property="og:description" content="<?php echo htmlspecialchars($excerpt) ?>" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
 <?php
