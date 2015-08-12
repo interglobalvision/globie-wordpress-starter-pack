@@ -1,5 +1,3 @@
-<meta name="description" content="<?php bloginfo('description'); ?>">
-
 <meta name="twitter:site" value="@">
 <?php
 if( have_posts() ) {
@@ -11,17 +9,18 @@ if( have_posts() ) {
       }
   }
 }
-if( !empty($thumb) ) {
+if( !empty($thumb) && is_single() ) {
 ?>
   <meta property="og:image" content="<?php echo $thumb[0] ?>" />
 <?php
 } else {
 ?>
-  <meta property="og:image" content="<?php bloginfo('stylesheet_directory'); ?>/img/favicon.png" />
+  <meta property="og:image" content="<?php echo get_stylesheet_directory_uri(); ?>/img/og.jpg" />
 <?php
 }
 if( is_home() ) {
 ?>
+  <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
   <meta property="og:title" content="<?php bloginfo('name'); ?>" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
   <meta property="og:type" content="website" />
@@ -30,15 +29,16 @@ if( is_home() ) {
 <?php
 } elseif( is_single() ) {
 ?>
-  <meta property="og:url" content="<?php the_permalink() ?>"/>
-  <meta property="og:title" content="<?php single_post_title(''); ?>" />
+  <meta property="og:url" content="<?php the_permalink(); ?>"/>
+  <meta property="og:title" content="<?php the_title(); ?>" />
   <meta property="og:description" content="<?php echo htmlspecialchars($excerpt) ?>" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
 <?php
 } else {
 ?>
-  <meta property="og:title" content="<?php single_post_title(''); ?>" />
+  <meta property="og:url" content="<?php the_permalink() ?>"/>
+  <meta property="og:title" content="<?php the_title(); ?>" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
   <meta property="og:description" content="<?php bloginfo('description'); ?>" />
   <meta property="og:type" content="website" />
