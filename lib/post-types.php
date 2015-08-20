@@ -4,8 +4,8 @@ function add_menu_icons_styles(){
 ?>
  
 <style>
-#adminmenu .menu-icon-project div.wp-menu-image:before {
-    content: '\f498';
+#menu-posts-project .dashicons-admin-post:before {
+    content: '\f319';
 }
 </style>
  
