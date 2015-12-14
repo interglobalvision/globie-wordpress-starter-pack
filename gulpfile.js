@@ -16,6 +16,7 @@ var gulp = require('gulp');
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   minifycss = require('gulp-minify-css'),
+  swiss = require('kouto-swiss'),
 
   imagemin = require('gulp-imagemin');
 
@@ -50,7 +51,11 @@ gulp.task('javascript-library', function() {
 gulp.task('style', function() {
   return gulp.src('css/site.styl')
   .pipe(plumber())
-  .pipe(stylus())
+  .pipe(stylus({
+      use: [
+        swiss()
+      ],
+    }))
   .on('error', errorNotify)
   .pipe(autoprefixer())
   .on('error', errorNotify)
@@ -63,14 +68,14 @@ gulp.task('style', function() {
 });
 
 gulp.task('images', function () {
-    return gulp.src('src/images/*.*')
-    .pipe(cache('images'))
-    .pipe(imagemin({
-      progressive: false
-    }))
-    .on('error', errorNotify)
-    .pipe(gulp.dest('img/dist'))
-		.pipe(notify({ message: 'Images task complete' }));
+  return gulp.src('src/images/*.*')
+  .pipe(cache('images'))
+  .pipe(imagemin({
+    progressive: false
+  }))
+  .on('error', errorNotify)
+  .pipe(gulp.dest('img/dist'))
+	.pipe(notify({ message: 'Images task complete' }));
 });
 
 gulp.task('watch', function() {
