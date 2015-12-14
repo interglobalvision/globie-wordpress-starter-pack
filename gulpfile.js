@@ -25,6 +25,8 @@ function errorNotify(error){
   util.log(util.colors.red('Error'), error.message);
 }
 
+// JAVASCRIPT
+
 gulp.task('javascript', function() {
   gulp.src('js/main.js')
   .pipe(sourcemaps.init())
@@ -48,6 +50,8 @@ gulp.task('javascript-library', function() {
   .pipe(notify({ message: 'Javascript Library task complete' }));
 });
 
+// STYLES
+
 gulp.task('style', function() {
   return gulp.src('css/site.styl')
   .pipe(plumber())
@@ -67,8 +71,10 @@ gulp.task('style', function() {
   .pipe(notify({ message: 'Style task complete' }));
 });
 
+// IMAGES
+
 gulp.task('images', function () {
-  return gulp.src('src/images/*.*')
+  return gulp.src('img/src/*.*')
   .pipe(cache('images'))
   .pipe(imagemin({
     progressive: false
@@ -78,12 +84,14 @@ gulp.task('images', function () {
 	.pipe(notify({ message: 'Images task complete' }));
 });
 
+// TASKS
+
 gulp.task('watch', function() {
   gulp.watch(['js/main.js'], ['javascript']);
   gulp.watch(['js/library/*.js'], ['javascript-library']);
   gulp.watch(['css/site.styl'], ['style']);
-  gulp.watch(['img/src/**'], ['images']);
+  gulp.watch(['img/src/*.*'], ['images']);
 });
 
-gulp.task('build', ['style', 'javascript', 'javascript-library']);
+gulp.task('build', ['style', 'javascript', 'javascript-library');
 gulp.task('default', ['watch']);
