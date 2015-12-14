@@ -9,3 +9,9 @@ Tech this uses [thnx]:
 
 - http://gulpjs.com/
 - https://github.com/WebDevStudios/CMB2
+
+---
+
+occasionally somebody needs to do this on the theme:
+
+`git submodule foreach git pull origin master`
