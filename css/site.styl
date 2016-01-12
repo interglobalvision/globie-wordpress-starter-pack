@@ -22,19 +22,19 @@ $gutter = 16px
   margin-right: ($gutter/2)
   box-sizing: content-box
 for col in 1..$cols
-  .s-col{col}
+  .s{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
 
 @media screen and (min-width: 601px)
 
   for col in 1..$cols
-    .m-col{col}
+    .m{col}
       width: ( col * $col ) + ( ( col - 1 ) * $gutter )
 
 @media screen and (min-width: 993px)
 
   for col in 1..$cols
-    .l-col{col}
+    .l{col}
       width: ( col * $col ) + ( ( col - 1 ) * $gutter )
 
 // FLUID COLS
