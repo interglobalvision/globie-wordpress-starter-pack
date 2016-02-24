@@ -11,25 +11,31 @@ normalize()
 $cols = 12
 $col = 90px
 $gutter = 16px
+
 .container
   margin: 0 auto
   width: ($col * $cols)+($gutter * $cols)
+
 .row
   clear: both
+
 .col
   float: left
   margin-left: ($gutter/2)
   margin-right: ($gutter/2)
-  box-sizing: content-box
+
 for col in 1..$cols
   .col-{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
 
 // FLUID COLS
+
 .percent-col
   float: left
-  box-sizing: content-box
+  box-sizing: border-box
+
 $pcols = 10
+
 for pcol in 1..$pcols
   .s-into-{pcol}
     width: ( 100% / pcol )
@@ -53,6 +59,7 @@ $golden-ratio = 1.61803398875
 $margin-small = ($gutter)
 $margin-tiny = ($gutter / 2)
 $margin-basic = ($gutter * 2)
+$margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
 $font-size-basic = 15px
@@ -71,22 +78,23 @@ body
   letter-spacing: $font-tracking-basic
 
 h1
-  font-size: 3em
+  font-size: 3rem
 
 h2
-  font-size: 2em
+  font-size: 2rem
 
 h3
-  font-size: 1.5em
+  font-size: 1.5rem
 
 p
-  margin-bottom: 1em
+  margin-bottom: 1rem
 
 
 // LINKS
 
 a, a:active, a:visited
-  color:inherit
+  color: inherit
+  text-decoration: none
   transition:opacity .2s
   &:hover
     opacity:.5
@@ -118,4 +126,3 @@ img
     width: 100%
     float: none
     margin-left: ($gutter/2)
-    box-sizing: content-box
