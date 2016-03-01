@@ -153,5 +153,5 @@ function debug_page_request() {
   echo '<!-- Loaded Template: ';
   echo basename($template);
   echo ' -->'.D4P_EOL;
-
+}
 ?>
