@@ -4,9 +4,17 @@ function scripts_and_styles_method() {
   $templateuri = get_template_directory_uri() . '/js/';
 
   // library.js is to bundle plugins. my.js is your scripts. enqueue more files as needed
-  $jslib = $templateuri."library.js";
+  $jslib = $templateuri . 'library.js';
   wp_enqueue_script( 'jslib', $jslib,'','',true);
-  $myscripts = $templateuri."main.js";
+
+  $myscripts = $templateuri . 'main.js';
+  $is_admin = current_user_can('administrator') ? 1 : 0;
+  $jsVars = array(
+  	'themeUrl' => get_template_directory_uri(),
+  	'isAdmin' => $is_admin,
+  );
+
+  wp_localize_script( 'myscripts', 'WP', $jsVars );
   wp_enqueue_script( 'myscripts', $myscripts,'','',true);
 
   // enqueue stylesheet here. file does not exist until stylus file is processed
