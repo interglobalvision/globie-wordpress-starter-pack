@@ -18,7 +18,7 @@
   "homepage": "https://github.com/interglobalvision/interglobalvision_wp_boil",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-autoprefixer": "^2.1.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-cached": "^1.0.4",
     "gulp-concat": "^2.5.2",
     "gulp-imagemin": "^2.2.1",
