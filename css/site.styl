@@ -17,7 +17,7 @@ $gutter = 16px
   width: ($col * $cols)+($gutter * $cols)
 
 .row
-  clear: both
+  clearfix()
 
 .col
   float: left
@@ -73,7 +73,7 @@ $color-white-soft = rgb(253, 253, 253)
 // TYPOGRAPHY
 
 body
-  font-family: helvetica, arial, sans-serif
+  font-family: font-stack('Helvetica')
   font-size: $font-size-basic
   line-height: $font-leading-basic
   letter-spacing: $font-tracking-basic
@@ -90,15 +90,17 @@ h3
 p
   margin-bottom: 1rem
 
+.font-overflow-ellipsis
+  overflow: ellipsis
+
 
 // LINKS
 
-a, a:active, a:visited
+a,
+a:active,
+a:visited
   color: inherit
   text-decoration: none
-  transition:opacity .2s
-  &:hover
-    opacity:.5
 
 
 // BASIC
