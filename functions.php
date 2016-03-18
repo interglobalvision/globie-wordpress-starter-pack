@@ -12,6 +12,7 @@ function scripts_and_styles_method() {
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
   $jsVars = array(
+  	'siteUrl' => home_url(),
   	'themeUrl' => get_template_directory_uri(),
   	'isAdmin' => $is_admin,
   );
