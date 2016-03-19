@@ -100,6 +100,15 @@ function wpb_imagelink_setup() {
 }
 add_action('admin_init', 'wpb_imagelink_setup', 10);
 
+// Clean site desc. after theme activation
+function clean_site_blog_info() {
+  $old  = get_option('blogdescription');
+  if ( $old == 'Just another WordPress site' || $old == 'Otro sitio realizado con WordPress' ) {
+    update_option( 'blogdescription', '' );
+  }
+}
+add_action( 'after_setup_theme', 'clean_site_blog_info' );
+
 // custom login logo
 /*
 function custom_login_logo() {
