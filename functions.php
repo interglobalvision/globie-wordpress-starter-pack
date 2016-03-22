@@ -7,7 +7,7 @@ function scripts_and_styles_method() {
   $jslib = $templateuri . 'library.js';
   wp_enqueue_script( 'jslib', $jslib,'','',true);
 
-  $myscripts = $templateuri . "main.min.js";
+  $myscripts = WP_DEBUG ? $templateuri . "main.js" : $templateuri . "main.min.js";
   wp_register_script( 'myscripts', $myscripts );
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
