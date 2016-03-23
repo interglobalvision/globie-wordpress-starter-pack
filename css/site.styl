@@ -7,7 +7,8 @@ meyer-reset()
 box-sizing-reset()
 normalize()
 
-// GRID OF 12 90px COLUMNS WITH 16px GUTTER
+// GRID
+
 $cols = 12
 $col = 90px
 $gutter = 16px
@@ -29,7 +30,7 @@ for col in 1..$cols
   .col-{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
 
-// FLUID COLS
+    // FLUID COLS
 
 .percent-col
   float: left
@@ -78,6 +79,8 @@ body
   line-height: $font-leading-basic
   letter-spacing: $font-tracking-basic
 
+  // HTML ELEMENT STYLING
+
 h1
   font-size: 3rem
 
@@ -90,8 +93,31 @@ h3
 p
   margin-bottom: 1rem
 
-.font-overflow-ellipsis
+  // FONT RULES
+
+.font-italic
+  font-style: italic
+
+.font-bold
+  font-weight: bold
+
+.font-small-caps
+  font-size: 0.85em
+  text-transform: uppercase
+
+  // TEXT RULES
+
+.text-overflow-ellipsis
   overflow: ellipsis
+
+.text-align-left
+  text-align: left
+
+.text-align-right
+  text-align: right
+
+.text-align-center
+  text-align: center
 
 
 // LINKS
