@@ -75,9 +75,9 @@ $font-size-h3 = golden-ratio(1rem , 1)
 $font-size-h2 = golden-ratio(1rem , 1.5)
 $font-size-h1 = golden-ratio(1rem , 2)
 
-
-$font-leading-basic = 1.35em
-$font-leading-larger = 1.45em
+$font-leading-basic = 1.35
+$font-leading-tighter = 1.15
+$font-leading-larger = 1.45
 
 $font-tracking-basic = 0.001em
 $font-tracking-wider = 0.05em
@@ -92,16 +92,20 @@ $color-white-soft = rgb(253, 253, 253)
 html
   font-family: font-stack('Helvetica')
   font-size: $font-size-basic
-  line-height: $font-leading-basic
   letter-spacing: $font-tracking-basic
+
+body
+  line-height: $font-leading-basic
 
   // HTML ELEMENT STYLING
 
 h1
   font-size: $font-size-h1
+  line-height: $font-leading-tighter
 
 h2
   font-size: $font-size-h2
+  line-height: $font-leading-tighter
 
 h3
   font-size: $font-size-h3
