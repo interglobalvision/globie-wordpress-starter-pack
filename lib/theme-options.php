@@ -91,7 +91,7 @@ class IGV_Admin {
    */
   function add_options_page_metabox() {
 
-    $cmb = new_cmb2_box( array(
+    $options_metabox = new_cmb2_box( array(
       'id'      => $this->metabox_id,
       'hookup'  => false,
       'show_on' => array(
@@ -110,21 +110,21 @@ class IGV_Admin {
       'type' => 'title',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Facebook Page URL', 'IGV' ),
       'desc' => __( '', 'IGV' ),
       'id'   => $this->prefix . 'socialmedia_facebook_url',
       'type' => 'text',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Twitter Account Handle', 'IGV' ),
       'desc' => __( '', 'IGV' ),
       'id'   => $this->prefix . 'socialmedia_twitter',
       'type' => 'text',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Instagram Account Handle', 'IGV' ),
       'desc' => __( '', 'IGV' ),
       'id'   => $this->prefix . 'socialmedia_instagram',
@@ -140,21 +140,21 @@ class IGV_Admin {
       'type' => 'title',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Open Graph image', 'IGV' ),
       'desc' => __( 'primarily displayed on Facebook, but other locations as well', 'IGV' ),
       'id'   => $this->prefix . 'og_image',
       'type' => 'file',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Logo', 'IGV' ),
       'desc' => __( '(options) ', 'IGV' ),
       'id'   => $this->prefix . 'metadata_logo',
       'type' => 'file',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Facebook App ID', 'IGV' ),
       'desc' => __( '(optional)', 'IGV' ),
       'id'   => $this->prefix . 'og_fb_app_id',
@@ -170,7 +170,7 @@ class IGV_Admin {
       'type' => 'title',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name' => __( 'Test Text', 'IGV' ),
       'desc' => __( 'field description (optional)', 'IGV' ),
       'id'   => $this->prefix . 'test_text',
@@ -178,7 +178,7 @@ class IGV_Admin {
       'default' => 'Default Text',
     ) );
 
-    $cmb->add_field( array(
+    $options_metabox->add_field( array(
       'name'    => __( 'Test Color Picker', 'IGV' ),
       'desc'    => __( 'field description (optional)', 'IGV' ),
       'id'      => $this->prefix . 'test_colorpicker',
