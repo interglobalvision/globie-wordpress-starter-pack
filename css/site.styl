@@ -29,9 +29,9 @@ normalize()
 // GRID
 
 $cols = 12
-$col = 90px
-$gutter = 16px
-
+$col = 14px
+$gutter = 12px
+ 
 .container
   margin: 0 auto
   width: ($col * $cols)+($gutter * $cols)
@@ -46,7 +46,7 @@ $gutter = 16px
   min-height: 1px
 
 for col in 1..$cols
-  .col{col}
+  .col-s-{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
 
     // FLUID COLS
@@ -60,18 +60,6 @@ $pcols = 10
 for pcol in 1..$pcols
   .s-into-{pcol}
     width: ( 100% / pcol )
-
-@media screen and (min-width: 601px)
-
-  for pcol in 1..$pcols
-    .m-into-{pcol}
-      width: ( 100% / pcol )
-
-@media screen and (min-width: 993px)
-
-  for pcol in 1..$pcols
-    .l-into-{pcol}
-      width: ( 100% / pcol )
 
 // ******************************************************
 
@@ -274,10 +262,10 @@ img
 
 // MEDIA QUERIES
 
-@media screen and (max-width: ($col * $cols)+($gutter * $cols))
+@media screen and (min-width: 720px)
 
-  @import "responsive/desktop-mid"
+  @import "responsive/tablet"
 
-@media screen and (max-width: 601px)
+@media screen and (min-width: 1152px)
 
-  @import "responsive/mobile"
+  @import "responsive/desktop"
