@@ -10,6 +10,10 @@ Site = {
       _this.onResize();
     });
 
+    $(document).ready(function () {
+
+    });
+
   },
 
   onResize: function() {
@@ -27,9 +31,4 @@ Site = {
   },
 };
 
-jQuery(document).ready(function () {
-  'use strict';
-
-  Site.init();
-
-});
+Site.init();
