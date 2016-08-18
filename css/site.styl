@@ -27,58 +27,20 @@ normalize()
 // ******************************************************
 
 // GRID
-
-$cols = 12
-$col = 14px
-$gutter = 12px
  
 .container
   margin: 0 auto
-  width: ($col * $cols)+($gutter * $cols)
 
 .row
   clearfix()
 
 .col
   float: left
-  margin-left: ($gutter/2)
-  margin-right: ($gutter/2)
   min-height: 1px
-
-for col in 1..$cols
-  .col-s-{col}
-    width: ( col * $col ) + ( ( col - 1 ) * $gutter )
-
-    // FLUID COLS
-
-.percent-col
-  float: left
-  box-sizing: border-box
-
-$pcols = 10
-
-for pcol in 1..$pcols
-  .s-into-{pcol}
-    width: ( 100% / pcol )
 
 // ******************************************************
 
 // VARIABLES
-
-$golden-ratio = 1.61803398875
-
-$margin-small = ($gutter)
-$margin-tiny = ($gutter / 2)
-$margin-micro = ($gutter / (2 * $golden-ratio))
-$margin-basic = ($gutter * 2)
-$margin-mid = ($gutter * 3.5)
-$margin-large = ($gutter * 5)
-
-$font-size-basic = 15px
-$font-size-larger = 1.3rem
-$font-size-h3 = golden-ratio(1rem , 1)
-$font-size-h2 = golden-ratio(1rem , 1.5)
-$font-size-h1 = golden-ratio(1rem , 2)
 
 $font-leading-basic = 1.35
 $font-leading-tighter = 1.15
@@ -96,24 +58,12 @@ $color-white-soft = rgb(253, 253, 253)
 
 html
   font-family: font-stack('Helvetica')
-  font-size: $font-size-basic
   letter-spacing: $font-tracking-basic
 
 body
   line-height: $font-leading-basic
 
   // HTML ELEMENT STYLING
-
-h1
-  font-size: $font-size-h1
-  line-height: $font-leading-tighter
-
-h2
-  font-size: $font-size-h2
-  line-height: $font-leading-tighter
-
-h3
-  font-size: $font-size-h3
 
 p
   margin-bottom: 1rem
@@ -169,90 +119,6 @@ img
 
 // ******************************************************
 
-// MARGINS AND PADDING
-
-  // MARGIN TOP
-
-.margin-top-micro
-  margin-top: $margin-micro
-
-.margin-top-tiny
-  margin-top: $margin-tiny
-
-.margin-top-small
-  margin-top: $margin-small
-
-.margin-top-basic
-  margin-top: $margin-basic
-
-.margin-top-mid
-  margin-top: $margin-mid
-
-.margin-top-large
-  margin-top: $margin-large
-
-  // MARGIN BOTTOM
-
-.margin-bottom-micro
-  margin-bottom: $margin-micro
-
-.margin-bottom-tiny
-  margin-bottom: $margin-tiny
-
-.margin-bottom-small
-  margin-bottom: $margin-small
-
-.margin-bottom-basic
-  margin-bottom: $margin-basic
-
-.margin-bottom-mid
-  margin-bottom: $margin-mid
-
-.margin-bottom-large
-  margin-bottom: $margin-large
-
-  // PADDING TOP
-
-.padding-top-micro
-  padding-top: $margin-micro
-
-.padding-top-tiny
-  padding-top: $margin-tiny
-
-.padding-top-small
-  padding-top: $margin-small
-
-.padding-top-basic
-  padding-top: $margin-basic
-
-.padding-top-mid
-  padding-top: $margin-mid
-
-.padding-top-large
-  padding-top: $margin-large
-
-  // PADDING BOTTOM
-
-.padding-bottom-micro
-  padding-bottom: $margin-micro
-
-.padding-bottom-tiny
-  padding-bottom: $margin-tiny
-
-.padding-bottom-small
-  padding-bottom: $margin-small
-
-.padding-bottom-basic
-  padding-bottom: $margin-basic
-
-.padding-bottom-mid
-  padding-bottom: $margin-mid
-
-.padding-bottom-large
-  padding-bottom: $margin-large
-
-// ******************************************************
-
 
 
 
@@ -261,6 +127,8 @@ img
 // ******************************************************
 
 // MEDIA QUERIES
+
+@import "responsive/mobile"
 
 @media screen and (min-width: 720px)
 
