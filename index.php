@@ -2,11 +2,7 @@
 get_header();
 ?>
 
-<!-- main content -->
-
 <main id="main-content">
-
-  <!-- main posts loop -->
   <section id="posts">
 
 <?php
@@ -31,12 +27,9 @@ if( have_posts() ) {
 <?php
 } ?>
 
-  <!-- end posts -->
   </section>
 
   <?php get_template_part('partials/pagination'); ?>
-
-<!-- end main-content -->
 
 </main>
 
