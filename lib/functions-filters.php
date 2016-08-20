@@ -5,7 +5,7 @@
 // Page Slug Body Class
 function add_slug_body_class( $classes ) {
   global $post;
-  if (isset($post) && !is_home()) {
+  if (isset($post) && !is_home() && !is_archive()) {
     $classes[] = $post->post_type . '-' . $post->post_name;
   }
   return $classes;
