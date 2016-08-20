@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <?php
-    get_template_part('partials/scripts');
+    get_template_part('partials/globie');
     get_template_part('partials/seo');
   ?>
 
