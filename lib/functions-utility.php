@@ -24,7 +24,7 @@ function get_id_by_slug($page_slug) {
 }
 // is_single for custom post type
 function is_single_type($type, $post) {
-  if (!$post || is_single()) {
+  if (!$post || !is_single()) {
     return false;
   } else if (get_post_type($post->ID) === $type) {
     return true;
