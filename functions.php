@@ -34,11 +34,9 @@ function scripts_and_styles_method() {
 }
 add_action('wp_enqueue_scripts', 'scripts_and_styles_method');
 
-
 // Declare thumbnail sizes
 
 get_template_part( 'lib/thumbnail-sizes' );
-
 
 // Register Nav Menus
 /*
@@ -47,20 +45,27 @@ register_nav_menus( array(
 ) );
 */
 
+// Add third party PHP libs
+
+function cmb_initialize_cmb_meta_boxes() {
+  if (!class_exists( 'cmb2_bootstrap_202' ) ) {
+    require_once 'vendor/webdevstudios/cmb2/init.php';
+    require_once 'vendor/webdevstudios/cmb2-post-search-field/lib/init.php';
+  }
+}
+add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
+
+function composer_autoload() {
+  require_once( 'vendor/autoload.php' );
+}
+/* add_action( 'init', 'composer_autoload', 9999 ); */
+
+// Add libs
+
 get_template_part( 'lib/custom-gallery' );
 get_template_part( 'lib/post-types' );
 get_template_part( 'lib/meta-boxes' );
 get_template_part( 'lib/theme-options' );
-
-
-// Add third party PHP libs
-
-add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
-function cmb_initialize_cmb_meta_boxes() {
-  if (!class_exists( 'cmb2_bootstrap_202' ) ) {
-    require_once 'lib/CMB2/init.php';
-  }
-}
 
 // Add custom functions
 

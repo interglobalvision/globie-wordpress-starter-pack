@@ -3,15 +3,20 @@ wp_boil
 
 Starting point for our wordpress themes
 
-`git clone --recursive --depth 1 git@github.com:interglobalvision/interglobalvision-wp-boil.git`
+`git clone git@github.com:interglobalvision/interglobalvision-wp-boil.git`
 
 Tech this uses [thnx]:
 
 - http://gulpjs.com/
+- https://getcomposer.org/
 - https://github.com/WebDevStudios/CMB2
+- https://github.com/fightbulc/moment.php
 
 ---
 
-occasionally somebody needs to do this on the theme:
+#### Setup
 
-`git submodule foreach git pull origin master`
+- `npm install`
+- `gulp build` or `gulp`
+- check composer.json if you want moment or other things
+- `composer install`
