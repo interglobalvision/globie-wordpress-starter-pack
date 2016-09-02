@@ -91,8 +91,8 @@ get_header();
 
       <div class="grid-row reverse">
         <div class="grid-item grid-column">
-          <img class="margin-bottom-small" src="http://lorempixel.com/g/200/200/">
-          <img class="margin-bottom-small" src="http://lorempixel.com/g/200/200/">
+          <div class="margin-bottom-small"><img src="http://lorempixel.com/g/200/200/"></div>
+          <div class="margin-bottom-small grid-row reverse"><img src="http://lorempixel.com/g/100/100/"></div>
         </div>
         <div class="grid-item item-s-4 margin-bottom-small">
           <p>
