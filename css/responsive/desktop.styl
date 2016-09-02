@@ -8,19 +8,19 @@ $gutter = 16px
   width: ($col * $cols)+($gutter * $cols)
 
 .col
-  margin-left: ($gutter/2)
   margin-right: ($gutter/2)
-  
+  margin-left: ($gutter/2)
+
 for col in 1..$cols
   .col-l-{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
-    
+
 $pcols = 10
 
 for pcol in 1..$pcols
   .l-into-{pcol}
     width: ( 100% / pcol )
-    
+
 // ******************************************************
 
 // VARIABLES
@@ -57,7 +57,7 @@ h2
 
 h3
   font-size: $font-size-h3
-  
+
 // ******************************************************
 
 // MARGINS AND PADDING
