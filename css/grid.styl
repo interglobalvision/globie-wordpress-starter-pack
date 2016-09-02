@@ -1,0 +1,227 @@
+// GRID
+
+.container
+  margin: 0 auto
+  max-width: 2400px 
+  
+.grid-row
+  box-sizing: border-box
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  &.reverse
+    flex-direction: row-reverse
+    
+.grid-column
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  &.reverse
+    flex-direction: column-reverse
+    
+.grid-item
+  position: relative
+  flex: 0 1 auto
+  box-sizing: border-box
+  max-width: 100%
+  max-height: 100%
+
+.no-gutter
+  padding-left: 0
+  padding-right: 0
+  
+.flex-grow
+  flex-grow: 1
+  
+// FLEX POSITIONING
+
+  //ALIGN CONTENT  
+
+.align-content-start
+  align-content: flex-start
+
+.align-content-center
+  align-content: center
+
+.align-content-end
+  align-content: flex-end
+  
+.align-content-between  
+  align-content: space-between
+
+.align-content-around
+  align-content: space-around
+
+.align-content-stretch
+  align-content: stretch
+
+  //ALIGN ITEMS 
+    
+.align-items-start
+  align-items: flex-start
+
+.align-items-center
+  align-items: center
+
+.align-items-end
+  align-items: flex-end
+  
+.align-items-baseline
+  align-items: baseline
+
+.align-items-stretch
+  align-items: stretch
+  
+  //ALIGN SELF 
+
+.align-self-auto
+  align-self: auto
+  
+.align-self-start
+  align-self: flex-start
+
+.align-self-center
+  align-self: center
+
+.align-self-end
+  align-self: flex-end
+  
+.align-self-baseline
+  align-self: baseline
+
+.align-self-stretch
+  align-self: stretch
+  
+  //JUSTIFY CONTENT 
+
+.justify-start
+  justify-content: flex-start
+
+.justify-center
+  justify-content: center
+
+.justify-end
+  justify-content: flex-end
+  
+.justify-between
+  justify-content: space-between
+  
+.justify-around
+  justify-content: space-around
+  
+$golden-ratio = 1.61803398875
+
+// GRID
+
+grid($width, $size, $gutter, $cols = 12)
+
+  .container
+    width: $width
+    
+  // COLUMN SIZES & OFFSETS
+
+  for offset in 0..($cols - 1)
+    .grid-row
+      .offset-{$size}-{col}
+        margin-left: ( 100% / $cols ) * offset
+
+  for col in 1..$cols
+    .item-{$size}-{col}
+      flex-basis: ( 100% / $cols ) * col
+    .grid-row
+      .item-{$size}-{col}
+        max-width: ( 100% / $cols ) * col
+    .grid-column
+      .item-{$size}-{col}
+        max-height: ( 100% / $cols ) * col
+
+  // VARIABLES
+
+  $margin-small = ($gutter)
+  $margin-tiny = ($gutter / 2)
+  $margin-micro = ($gutter / (2 * $golden-ratio))
+  $margin-basic = ($gutter * 2)
+  $margin-mid = ($gutter * 3.5)
+  $margin-large = ($gutter * 5)
+
+  // MARGINS AND PADDING
+
+    // MARGIN TOP
+
+  .margin-top-micro
+    margin-top: $margin-micro
+
+  .margin-top-tiny
+    margin-top: $margin-tiny
+
+  .margin-top-small
+    margin-top: $margin-small
+
+  .margin-top-basic
+    margin-top: $margin-basic
+
+  .margin-top-mid
+    margin-top: $margin-mid
+
+  .margin-top-large
+    margin-top: $margin-large
+
+    // MARGIN BOTTOM
+
+  .margin-bottom-micro
+    margin-bottom: $margin-micro
+
+  .margin-bottom-tiny
+    margin-bottom: $margin-tiny
+
+  .margin-bottom-small
+    margin-bottom: $margin-small
+
+  .margin-bottom-basic
+    margin-bottom: $margin-basic
+
+  .margin-bottom-mid
+    margin-bottom: $margin-mid
+
+  .margin-bottom-large
+    margin-bottom: $margin-large
+
+    // PADDING TOP
+
+  .padding-top-micro
+    padding-top: $margin-micro
+
+  .padding-top-tiny
+    padding-top: $margin-tiny
+
+  .padding-top-small
+    padding-top: $margin-small
+
+  .padding-top-basic
+    padding-top: $margin-basic
+
+  .padding-top-mid
+    padding-top: $margin-mid
+
+  .padding-top-large
+    padding-top: $margin-large
+
+    // PADDING BOTTOM
+
+  .padding-bottom-micro
+    padding-bottom: $margin-micro
+
+  .padding-bottom-tiny
+    padding-bottom: $margin-tiny
+
+  .padding-bottom-small
+    padding-bottom: $margin-small
+
+  .padding-bottom-basic
+    padding-bottom: $margin-basic
+
+  .padding-bottom-mid
+    padding-bottom: $margin-mid
+
+  .padding-bottom-large
+    padding-bottom: $margin-large
