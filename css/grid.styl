@@ -106,8 +106,6 @@
 .justify-around
   justify-content: space-around
   
-$golden-ratio = 1.61803398875
-
 // GRID
 
 grid($width, $size, $gutter, $cols = 12)
@@ -137,7 +135,7 @@ grid($width, $size, $gutter, $cols = 12)
 
   $margin-small = ($gutter)
   $margin-tiny = ($gutter / 2)
-  $margin-micro = ($gutter / (2 * $golden-ratio))
+  $margin-micro = ($gutter / 3)
   $margin-basic = ($gutter * 2)
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
