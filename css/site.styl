@@ -142,14 +142,28 @@ grid(96%, s, 14px)
 
   @import "responsive/tablet"
 
-@media screen and (min-width: 1200px)
+@media screen and (min-width: 1024px)
 
-  grid(1150px, l, 24px)
+  grid(1000px, l, 24px)
 
   @import "responsive/desktop"
+  
+@media screen and (min-width: 1280px)
 
-// @media screen and (min-width: 1366px)
+  .container
+    width: 1200px
 
-// @media screen and (min-width: 1680px)
+@media screen and (min-width: 1366px)
 
-// @media screen and (min-width: 1920px)
+  .container
+    width: 1300px
+
+@media screen and (min-width: 1680px)
+
+  .container
+    width: 1600px
+
+@media screen and (min-width: 1920px)
+
+  .container
+    width: 1800px
