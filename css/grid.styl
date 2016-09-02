@@ -2,7 +2,6 @@
 
 .container
   margin: 0 auto
-  max-width: 2400px 
   
 .grid-row
   box-sizing: border-box
@@ -116,6 +115,9 @@ grid($width, $size, $gutter, $cols = 12)
   .container
     width: $width
     
+  .grid-item
+    padding: 0 ( $gutter / 2 )
+    
   // COLUMN SIZES & OFFSETS
 
   for offset in 0..($cols - 1)
@@ -126,12 +128,10 @@ grid($width, $size, $gutter, $cols = 12)
   for col in 1..$cols
     .item-{$size}-{col}
       flex-basis: ( 100% / $cols ) * col
-    .grid-row
-      .item-{$size}-{col}
-        max-width: ( 100% / $cols ) * col
-    .grid-column
-      .item-{$size}-{col}
-        max-height: ( 100% / $cols ) * col
+    .grid-row > .item-{$size}-{col}
+      max-width: ( 100% / $cols ) * col
+    .grid-column > .item-{$size}-{col}
+      max-height: ( 100% / $cols ) * col
 
   // VARIABLES
 
@@ -182,7 +182,7 @@ grid($width, $size, $gutter, $cols = 12)
     margin-bottom: $margin-mid
 
   .margin-bottom-large
-    margin-bottom: $margin-large
+    margin-bottom: $margin-large 
 
     // PADDING TOP
 
@@ -223,3 +223,21 @@ grid($width, $size, $gutter, $cols = 12)
 
   .padding-bottom-large
     padding-bottom: $margin-large
+    
+// GRID TEST
+.grid-test
+  .container
+    background: lightyellow
+    border: yellow 2px solid
+  .grid-item
+    background: lightgrey
+    border: grey 2px
+  .grid-row
+    border: red 2px solid
+    background: pink
+  .grid-column
+    border: blue 2px solid
+    background: lightblue
+  .grid-item
+    border-style: dashed
+    
