@@ -132,38 +132,34 @@ img
 
 // MEDIA QUERIES
 
-grid(96%, s, 14px)
+grid(96%, 14px, s)
 
 @import "responsive/mobile"
 
 @media screen and (min-width: 720px)
 
-  grid(680px, m, 21px)
+  grid(680px, 21px, m)
 
   @import "responsive/tablet"
 
 @media screen and (min-width: 1024px)
 
-  grid(1000px, l, 24px)
+  grid(1000px, 24px, l)
 
   @import "responsive/desktop"
   
 @media screen and (min-width: 1280px)
-
-  .container
-    width: 1200px
+  
+  grid(1200px)
 
 @media screen and (min-width: 1366px)
 
-  .container
-    width: 1300px
+  grid(1300px)
 
 @media screen and (min-width: 1680px)
 
-  .container
-    width: 1600px
+  grid(1600px)
 
 @media screen and (min-width: 1920px)
 
-  .container
-    width: 1800px
+  grid(1800px)

@@ -108,119 +108,123 @@
   
 // GRID
 
-grid($width, $size, $gutter, $cols = 12)
-
-  .container
-    width: $width
+grid($width = false, $gutter = false, $size = false, $cols = 12)
+  
+  if $width
+    .container
+      width: $width
     
-  .grid-item
-    padding: 0 ( $gutter / 2 )
-    
+  if $gutter
+    .grid-item
+      padding: 0 ( $gutter / 2 )
+      
   // COLUMN SIZES & OFFSETS
 
-  for offset in 0..($cols - 1)
-    .grid-row
-      .offset-{$size}-{col}
-        margin-left: ( 100% / $cols ) * offset
+  if $gutter and $size
+    for offset in 0..($cols - 1)
+      .grid-row
+        .offset-{$size}-{col}
+          margin-left: ( 100% / $cols ) * offset
 
-  for col in 1..$cols
-    .item-{$size}-{col}
-      flex-basis: ( 100% / $cols ) * col
-    .grid-row > .item-{$size}-{col}
-      max-width: ( 100% / $cols ) * col
-    .grid-column > .item-{$size}-{col}
-      max-height: ( 100% / $cols ) * col
+    for col in 1..$cols
+      .item-{$size}-{col}
+        flex-basis: ( 100% / $cols ) * col
+      .grid-row > .item-{$size}-{col}
+        max-width: ( 100% / $cols ) * col
+      .grid-column > .item-{$size}-{col}
+        max-height: ( 100% / $cols ) * col
 
   // VARIABLES
+  
+  if $gutter
+    $margin-small = ($gutter)
+    $margin-tiny = ($gutter / 2)
+    $margin-micro = ($gutter / 3)
+    $margin-basic = ($gutter * 2)
+    $margin-mid = ($gutter * 3.5)
+    $margin-large = ($gutter * 5)
 
-  $margin-small = ($gutter)
-  $margin-tiny = ($gutter / 2)
-  $margin-micro = ($gutter / 3)
-  $margin-basic = ($gutter * 2)
-  $margin-mid = ($gutter * 3.5)
-  $margin-large = ($gutter * 5)
+    // MARGINS AND PADDING
 
-  // MARGINS AND PADDING
+      // MARGIN TOP
 
-    // MARGIN TOP
+    .margin-top-micro
+      margin-top: $margin-micro
 
-  .margin-top-micro
-    margin-top: $margin-micro
+    .margin-top-tiny
+      margin-top: $margin-tiny
 
-  .margin-top-tiny
-    margin-top: $margin-tiny
+    .margin-top-small
+      margin-top: $margin-small
 
-  .margin-top-small
-    margin-top: $margin-small
+    .margin-top-basic
+      margin-top: $margin-basic
 
-  .margin-top-basic
-    margin-top: $margin-basic
+    .margin-top-mid
+      margin-top: $margin-mid
 
-  .margin-top-mid
-    margin-top: $margin-mid
+    .margin-top-large
+      margin-top: $margin-large
 
-  .margin-top-large
-    margin-top: $margin-large
+      // MARGIN BOTTOM
 
-    // MARGIN BOTTOM
+    .margin-bottom-micro
+      margin-bottom: $margin-micro
 
-  .margin-bottom-micro
-    margin-bottom: $margin-micro
+    .margin-bottom-tiny
+      margin-bottom: $margin-tiny
 
-  .margin-bottom-tiny
-    margin-bottom: $margin-tiny
+    .margin-bottom-small
+      margin-bottom: $margin-small
 
-  .margin-bottom-small
-    margin-bottom: $margin-small
+    .margin-bottom-basic
+      margin-bottom: $margin-basic
 
-  .margin-bottom-basic
-    margin-bottom: $margin-basic
+    .margin-bottom-mid
+      margin-bottom: $margin-mid
 
-  .margin-bottom-mid
-    margin-bottom: $margin-mid
+    .margin-bottom-large
+      margin-bottom: $margin-large 
 
-  .margin-bottom-large
-    margin-bottom: $margin-large 
+      // PADDING TOP
 
-    // PADDING TOP
+    .padding-top-micro
+      padding-top: $margin-micro
 
-  .padding-top-micro
-    padding-top: $margin-micro
+    .padding-top-tiny
+      padding-top: $margin-tiny
 
-  .padding-top-tiny
-    padding-top: $margin-tiny
+    .padding-top-small
+      padding-top: $margin-small
 
-  .padding-top-small
-    padding-top: $margin-small
+    .padding-top-basic
+      padding-top: $margin-basic
 
-  .padding-top-basic
-    padding-top: $margin-basic
+    .padding-top-mid
+      padding-top: $margin-mid
 
-  .padding-top-mid
-    padding-top: $margin-mid
+    .padding-top-large
+      padding-top: $margin-large
 
-  .padding-top-large
-    padding-top: $margin-large
+      // PADDING BOTTOM
 
-    // PADDING BOTTOM
+    .padding-bottom-micro
+      padding-bottom: $margin-micro
 
-  .padding-bottom-micro
-    padding-bottom: $margin-micro
+    .padding-bottom-tiny
+      padding-bottom: $margin-tiny
 
-  .padding-bottom-tiny
-    padding-bottom: $margin-tiny
+    .padding-bottom-small
+      padding-bottom: $margin-small
 
-  .padding-bottom-small
-    padding-bottom: $margin-small
+    .padding-bottom-basic
+      padding-bottom: $margin-basic
 
-  .padding-bottom-basic
-    padding-bottom: $margin-basic
+    .padding-bottom-mid
+      padding-bottom: $margin-mid
 
-  .padding-bottom-mid
-    padding-bottom: $margin-mid
-
-  .padding-bottom-large
-    padding-bottom: $margin-large
+    .padding-bottom-large
+      padding-bottom: $margin-large
     
 // GRID TEST
 .grid-test
