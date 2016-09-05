@@ -17,6 +17,7 @@ var gulp = require('gulp');
   autoprefixer = require('gulp-autoprefixer'),
   minifycss = require('gulp-minify-css'),
   swiss = require('kouto-swiss'),
+  stylint = require('gulp-stylint'),
 
   imagemin = require('gulp-imagemin'),
 
@@ -64,6 +65,17 @@ gulp.task('javascript-library', function() {
 
 // STYLES
 
+gulp.task('style-lint', function () {
+  return gulp.src(['css/site.styl', 'css/responsive/*.styl'])
+  .pipe(cache('style-lint'))
+  .pipe(plumber())
+  .pipe(stylint({config: '.stylintrc'}))
+  .on('error', errorNotify)
+  .pipe(stylint.reporter())
+  .on('error', errorNotify)
+  .pipe(notify({ message: 'Style lint task complete' }));
+});
+
 gulp.task('style', function() {
   return gulp.src('css/site.styl')
   .pipe(plumber())
@@ -102,6 +114,7 @@ gulp.task('watch', function() {
   gulp.watch(['js/main.js'], ['javascript']);
   gulp.watch(['js/library/*.js'], ['javascript-library']);
   gulp.watch(['css/*.styl', 'css/responsive/*.styl'], ['style']);
+  gulp.watch(['css/*.styl', 'css/responsive/*.styl'], ['style-lint']);
   gulp.watch(['img/src/*.*'], ['images']);
   gulp.watch(['**/*.php', '!lib/thirdparty/**/*.php', '!lib/CMB2/**/*.php'], ['phplint']);
 });
