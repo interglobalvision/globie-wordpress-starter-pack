@@ -3,6 +3,7 @@
 // declare font families here
   
 $font-sans = font-stack('Helvetica');
+$font-serif = font-stack('Georgia');
 
 // ******************************************************
 
@@ -48,6 +49,15 @@ p
   font-size: .85em
 
   // FONT RULES
+  
+.font-sans
+  font-family: $font-sans
+  
+.font-serif
+  font-family: $font-serif
+  
+.font-larger
+  font-size: $font-size-larger
 
 .font-italic
   font-style: italic
@@ -60,6 +70,9 @@ p
 
 .font-capitalize
   text-transform: capitalize
+
+.font-uppercase
+  text-transform: uppercase
 
   // TEXT RULES
 
