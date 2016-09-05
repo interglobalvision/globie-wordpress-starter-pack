@@ -36,6 +36,16 @@ $font-tracking-wider = .05em
 
 html
   font-family: $font-sans
+  letter-spacing: $font-tracking-basic
+
+body
+  line-height: $font-leading-basic
+  
+p
+  margin-bottom: 1rem
+  
+.font-small-caps
+  font-size: .85em
 
   // FONT RULES
 
@@ -73,26 +83,19 @@ a:visited
   color: inherit
   text-decoration: none
   
-type($size-basic = 15px, $size-h3 = 18px, $size-h2 = 21px, $size-h1 = 24px)
-  
+type($size-basic = 15px, $size-h3 = false, $size-h2 = false, $size-h1 = false)
+   
   html
     font-size: $size-basic
-    letter-spacing: $font-tracking-basic
-
-  body
-    line-height: $font-leading-basic
     
-  h1, .font-size-h1
-    font-size: $size-h1
-    
-  h2, .font-size-h2
-    font-size: $size-h2
-
-  h3, .font-size-h3
-    font-size: $size-h3
-    
-  p
-    margin-bottom: 1rem
-    
-  .font-small-caps
-    font-size: .85em
+  if ($size-h1) 
+    h1, .font-size-h1
+      font-size: $size-h1
+      
+  if ($size-h2) 
+    h2, .font-size-h2
+      font-size: $size-h2
+      
+  if ($size-h3) 
+    h3, .font-size-h3
+      font-size: $size-h3
