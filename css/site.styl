@@ -28,19 +28,17 @@ normalize()
 
 // GRID
 
-.container
-  margin: 0 auto
-
-.row
-  clearfix()
-
-.col
-  float: left
-  min-height: 1px
+@import "grid"
 
 // ******************************************************
 
 // VARIABLES
+
+$font-size-basic = 15px
+$font-size-larger = 1.3rem
+$font-size-h3 = golden-ratio(1rem , 1)
+$font-size-h2 = golden-ratio(1rem , 1.5)
+$font-size-h1 = golden-ratio(1rem , 2)
 
 $font-leading-basic = 1.35
 $font-leading-tighter = 1.15
@@ -57,14 +55,24 @@ $color-white-soft = rgb(253, 253, 253)
 // TYPOGRAPHY
 
 html
+  font-size: $font-size-basic
   font-family: font-stack('Helvetica')
   letter-spacing: $font-tracking-basic
 
 body
   line-height: $font-leading-basic
 
-  // HTML ELEMENT STYLING
+  // HTML ELEMENT STYLING 
+    
+h1
+  font-size: $font-size-h1
 
+h2
+  font-size: $font-size-h2
+
+h3
+  font-size: $font-size-h3
+  
 p
   margin-bottom: 1rem
 
@@ -124,20 +132,34 @@ img
 
 // MEDIA QUERIES
 
+grid(96%, 14px, s)
+
 @import "responsive/mobile"
 
 @media screen and (min-width: 720px)
 
+  grid(680px, 21px, m)
+
   @import "responsive/tablet"
 
-// @media screen and (min-width: 1024px)
+@media screen and (min-width: 1024px)
 
-@media screen and (min-width: 1280px)
+  grid(1000px, 24px, l)
 
   @import "responsive/desktop"
+  
+@media screen and (min-width: 1280px)
+  
+  grid(1200px)
 
-// @media screen and (min-width: 1366px)
+@media screen and (min-width: 1366px)
 
-// @media screen and (min-width: 1680px)
+  grid(1300px)
 
-// @media screen and (min-width: 1920px)
+@media screen and (min-width: 1680px)
+
+  grid(1600px)
+
+@media screen and (min-width: 1920px)
+
+  grid(1800px)

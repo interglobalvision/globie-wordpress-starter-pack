@@ -1,14 +1,14 @@
 {
-    "name": "igv/igv",
-    "authors": [
-        {
-            "name": "interglobal.vision",
-            "email": "globie@interglobal.vision"
-        }
-    ],
-    "require": {
-      "webdevstudios/cmb2": "*",
-//       "webdevstudios/cmb2-post-search-field": "*",
-//       "fightbulc/moment": "*"
+  "name": "igv/igv",
+  "authors": [
+    {
+      "name": "interglobal.vision",
+      "email": "globie@interglobal.vision"
     }
+  ],
+  "require": {
+    "webdevstudios/cmb2": "*",
+    "webdevstudios/cmb2-post-search-field": "*",
+    "fightbulc/moment": "*"
+  }
 }
