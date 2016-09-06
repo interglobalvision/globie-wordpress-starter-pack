@@ -5,22 +5,7 @@
 
 // ******************************************************
 
-// FONTS
-
-// ******************************************************
-
-// ICONS FONTS
-
-// ** https://genericons.com WP icon font set
-// @import "fonts/icons/genericons"
-
-// ** minimal version of Google Materialize UI icons. check the styl for usage
-@import 'fonts/icons/materialize-min'
-
-// ** full set of Google Materialize. https://design.google.com/icons/
-// @import "fonts/icons/materialize"
-
-// ******************************************************
+// RESETS
 
 meyer-reset()
 box-sizing-reset()
@@ -30,90 +15,20 @@ normalize()
 
 // GRID
 
-@import "grid"
-
-// ******************************************************
-
-// VARIABLES
-
-$font-size-basic = 15px
-$font-size-larger = 1.3rem
-$font-size-h3 = golden-ratio(1rem , 1)
-$font-size-h2 = golden-ratio(1rem , 1.5)
-$font-size-h1 = golden-ratio(1rem , 2)
-
-$font-leading-basic = 1.35
-$font-leading-tighter = 1.15
-$font-leading-larger = 1.45
-
-$font-tracking-basic = .001em
-$font-tracking-wider = .05em
-
-$color-black-soft = rgb(14, 14, 14)
-$color-white-soft = rgb(253, 253, 253)
+@import 'grid'
 
 // ******************************************************
 
 // TYPOGRAPHY
 
-html
-  font-size: $font-size-basic
-  font-family: font-stack('Helvetica')
-  letter-spacing: $font-tracking-basic
+@import 'type'
 
-body
-  line-height: $font-leading-basic
+// ******************************************************
 
-  // HTML ELEMENT STYLING 
-    
-h1
-  font-size: $font-size-h1
+// VARIABLES
 
-h2
-  font-size: $font-size-h2
-
-h3
-  font-size: $font-size-h3
-  
-p
-  margin-bottom: 1rem
-
-  // FONT RULES
-
-.font-italic
-  font-style: italic
-
-.font-bold
-  font-weight: bold
-
-.font-small-caps
-  text-transform: uppercase
-  font-size: .85em
-
-.font-capitalize
-  text-transform: capitalize
-
-  // TEXT RULES
-
-.text-overflow-ellipsis
-  overflow: ellipsis
-
-.text-align-left
-  text-align: left
-
-.text-align-right
-  text-align: right
-
-.text-align-center
-  text-align: center
-
-  // LINKS
-
-a,
-a:active,
-a:visited
-  color: inherit
-  text-decoration: none
+$color-black-soft = rgb(14, 14, 14)
+$color-white-soft = rgb(253, 253, 253)
 
 // ******************************************************
 
@@ -129,24 +44,37 @@ img
 
 // ******************************************************
 
-
-// ******************************************************
-
 // MEDIA QUERIES
 
 grid(96%, 14px, s)
+
+$font-size-basic = 12px
+
+$font-size-h1 = 28px
+$font-size-h2 = 21px
+$font-size-h3 = 16px
+
+font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
 
 @import 'responsive/mobile'
 
 @media screen and (min-width: 720px)
 
   grid(680px, 21px, m)
-
+  
+  $font-size-basic = 14px
+  
+  font-size($font-size-basic)
+  
   @import 'responsive/tablet'
 
 @media screen and (min-width: 1024px)
 
   grid(1000px, 24px, l)
+  
+  $font-size-basic = 16px
+  
+  font-size($font-size-basic)
 
   @import 'responsive/desktop'
   
