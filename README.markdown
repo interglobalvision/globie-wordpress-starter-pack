@@ -20,3 +20,5 @@ Tech this uses [thnx]:
 - `gulp build` or `gulp`
 - check composer.json if you want moment or other things
 - `composer install`
+
+![](http://i.imgur.com/EKtRVZr.png)
