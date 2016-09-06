@@ -1,9 +1,10 @@
-wp_boil
--------
+globie-wordpress-starter-pack
+---
+v 1.7.5
 
 Starting point for our wordpress themes
 
-`git clone git@github.com:interglobalvision/interglobalvision-wp-boil.git`
+`git clone git@github.com:interglobalvision/globie-wordpress-starter-pack.git`
 
 Tech this uses [thnx]:
 
