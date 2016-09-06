@@ -57,3 +57,13 @@ function debug_page_request() {
   echo basename($template);
   echo ' -->'.D4P_EOL;
 }
+
+// Check post meta and echo, echo empty string if empty
+function echo_post_meta($post_id, $field_id) {
+  $meta = get_post_meta($post_id, $field_id, true);
+  if (!empty($meta)) {
+    echo $meta;
+  } else {
+    echo '';
+  }
+}
