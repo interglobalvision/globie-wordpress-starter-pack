@@ -3,6 +3,7 @@ get_header();
 ?>
 
 <main id="main-content" class="grid-test">
+
   <section id="posts" class="container margin-bottom-basic">
 
     <div class="margin-bottom-basic">
@@ -19,15 +20,7 @@ get_header();
 
         <div class="grid-item item-s-6 margin-bottom-small">
           <strong>.item-s-6</strong>
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <p>
-            The first crosstown knot is, in its own way, an earthquake. However, one cannot separate moats from slakeless llamas. What we don't know for sure is whether or not the badger of a valley becomes a mulley sailor. One cannot separate chards from ingrained forms.
-          </p>
-          <h3>Heading 3</h3>
-          <p>
-            If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.
-          </p>
+          <p>The first crosstown knot is, in its own way, an earthquake. However, one cannot separate moats from slakeless llamas. What we don't know for sure is whether or not the badger of a valley becomes a mulley sailor. One cannot separate chards from ingrained forms.</p>
         </div>
 
         <div class="grid-item item-s-3 grid-column margin-bottom-small">
@@ -108,6 +101,50 @@ get_header();
 
   </section>
 
+  <section class="container margin-bottom-basic">
+    <h2>Typography:</h2>
+
+    <h1>Heading 1</h1>
+
+    <h2>Heading 2</h2>
+
+    <h3>Heading 3</h3>
+    <p>If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-sans</h3>
+    <p class="font-sans">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-serif</h3>
+    <p class="font-serif">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-larger</h3>
+    <p class="font-larger">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-italic</h3>
+    <p class="font-italic">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-bold</h3>
+    <p class="font-bold">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-small-caps</h3>
+    <p class="font-small-caps">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-capitalize</h3>
+    <p class="font-capitalize">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.font-uppercase</h3>
+    <p class="font-uppercase">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.text-align-left</h3>
+    <p class="text-align-left">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.text-align-right</h3>
+    <p class="text-align-right">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+    <h3>.text-align-center</h3>
+    <p class="text-align-center">If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.</p>
+
+  </section>
 </main>
 
 <?php
