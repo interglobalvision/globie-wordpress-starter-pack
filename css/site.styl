@@ -27,20 +27,26 @@ normalize()
 
 // VARIABLES
 
-$color-black-soft = rgb(14, 14, 14)
-$color-white-soft = rgb(253, 253, 253)
+$color-black = rgb(0, 0, 0)
+$color-white = rgb(255, 255, 255)
 
 // ******************************************************
 
 // BASIC
 
 html
-  background-color: $color-white-soft
-  color: $color-black-soft
+  background-color: $color-white
+  color: $color-black
 
 img
   max-width: 100%
   height: auto
+
+.mobile-only
+  display: initial !important 
+  
+.desktop-only
+  display: none !important
 
 // ******************************************************
 
@@ -87,6 +93,9 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   
   font-size($font-size-basic)
   
+  .mobile-only
+    display: none !important
+  
   @import 'responsive/tablet'
 
 @media screen and (min-width: 1024px)
@@ -107,6 +116,9 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
   
   font-size($font-size-basic)
+  
+  .desktop-only
+    display: initial !important
 
   @import 'responsive/desktop'
   
