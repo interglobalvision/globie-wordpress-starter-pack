@@ -120,7 +120,7 @@ grid($width = false, $gutter = false, $size = false, $cols = 12)
   if $gutter and $size
     for offset in 0..($cols - 1)
       .grid-row
-        .offset-{$size}-{col}
+        .offset-{$size}-{offset}
           margin-left: ( 100% / $cols ) * offset
 
     for col in 1..$cols
