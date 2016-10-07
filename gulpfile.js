@@ -85,7 +85,9 @@ gulp.task('style', function() {
       ],
     }))
   .on('error', errorNotify)
-  .pipe(autoprefixer())
+  .pipe(autoprefixer({
+    browsers: ['last 5 versions'],
+  }))
   .on('error', errorNotify)
   .pipe(gulp.dest('css'))
   .pipe(rename({suffix: '.min'}))
