@@ -1,7 +1,8 @@
 <section id="scripts">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="<?php bloginfo('stylesheet_directory'); ?>/js/vendor/jquery-3.1.0.min.js"><\/script>')</script>
-<?php 
+  <?php wp_footer(); ?>
+<?php
 $google_tracking_id = IGV_get_option('_igv_site_options', '_igv_google_analytics_id');
 
 if (!empty($google_tracking_id)) {
@@ -16,8 +17,7 @@ if (!empty($google_tracking_id)) {
     ga('send', 'pageview');
 
   </script>
-<?php 
+<?php
 }
 ?>
-  <?php wp_footer(); ?>
 </section>
