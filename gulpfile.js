@@ -88,7 +88,6 @@ gulp.task('style', function() {
   return gulp.src(['css/site.styl'])
   .pipe(plumber())
   .pipe(stylus({
-    'include css': true,
     use: [
       swiss()
     ],
@@ -109,8 +108,7 @@ gulp.task('style', function() {
 gulp.task('style-library', function() {
   return gulp.src(mainBowerFiles('**/*.css'))
   .pipe(plumber())
-  .pipe(concat('library.css'))
-  .pipe(minifycss())
+  .pipe(concat('library.styl'))
   .on('error', errorNotify)
   .pipe(gulp.dest('css'))
   .pipe(notify({ message: 'Style library task complete' }));
@@ -121,6 +119,7 @@ gulp.task('style-library', function() {
 gulp.task('images', function () {
   return gulp.src('img/src/*.*')
   .pipe(cache('images'))
+  .pipe(plumber())
   .pipe(imagemin({
     progressive: false
   }))
