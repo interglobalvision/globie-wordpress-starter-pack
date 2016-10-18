@@ -1,6 +1,6 @@
 globie-wordpress-starter-pack
 ---
-v 1.7.5
+v 1.7.6
 
 Starting point for our wordpress themes
 
@@ -10,8 +10,10 @@ Tech this uses [thnx]:
 
 - http://gulpjs.com/
 - https://getcomposer.org/
+- https://bower.io/
 - https://github.com/WebDevStudios/CMB2
 - https://github.com/fightbulc/moment.php
+- https://github.com/aFarkas/lazysizes
 
 ---
 
@@ -21,5 +23,7 @@ Tech this uses [thnx]:
 - `gulp build` or `gulp`
 - check composer.json if you want moment or other things
 - `composer install`
+- check bower.json if you want to add more than just lazysizes
+- `bower install`
 
 ![](http://i.imgur.com/G56ITX7.png)

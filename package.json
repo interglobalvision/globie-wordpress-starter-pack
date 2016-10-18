@@ -1,6 +1,6 @@
 {
   "name": "interglobalvision_wp_boil",
-  "version": "0.0.1",
+  "version": "1.7.6",
   "description": "wp_boil -------",
   "main": "gulpfile.js",
   "scripts": {
