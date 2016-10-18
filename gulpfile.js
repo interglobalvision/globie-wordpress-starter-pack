@@ -86,29 +86,35 @@ gulp.task('style-lint', function () {
 });
 
 gulp.task('style', function() {
-  var filter = gulpFilter('**/*.styl', {restore: true});
-
-  return gulp.src(mainBowerFiles('**/*.css').concat(['css/site.styl']))
+  return gulp.src(['css/site.styl'])
   .pipe(plumber())
-  .pipe(filter)
   .pipe(stylus({
-      use: [
-        swiss()
-      ],
-    }))
+    'include css': true,
+    use: [
+      swiss()
+    ],
+  }))
   .on('error', errorNotify)
   .pipe(autoprefixer({
     browsers: ['last 5 versions'],
   }))
   .on('error', errorNotify)
-  .pipe(filter.restore)
-  .pipe(concat('site.css'))
   .pipe(gulp.dest('css'))
   .pipe(rename({suffix: '.min'}))
   .pipe(minifycss())
   .on('error', errorNotify)
   .pipe(gulp.dest('css'))
   .pipe(notify({ message: 'Style task complete' }));
+});
+
+gulp.task('style-library', function() {
+  return gulp.src(mainBowerFiles('**/*.css'))
+  .pipe(plumber())
+  .pipe(concat('library.css'))
+  .pipe(minifycss())
+  .on('error', errorNotify)
+  .pipe(gulp.dest('css'))
+  .pipe(notify({ message: 'Style library task complete' }));
 });
 
 // IMAGES
@@ -134,5 +140,6 @@ gulp.task('watch', function() {
   gulp.watch(['**/*.php', '!lib/thirdparty/**/*.php', '!lib/CMB2/**/*.php'], ['phplint']);
 });
 
-gulp.task('build', ['style', 'javascript', 'javascript-library']);
+gulp.task('build', ['build-style', 'javascript', 'javascript-library']);
+gulp.task('build-style', ['style-library', 'style']);
 gulp.task('default', ['watch']);
