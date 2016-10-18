@@ -5,6 +5,7 @@ var notify = require('gulp-notify');
 var util = require('gulp-util');
 var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
+var gulpFilter = require('gulp-filter');
 
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
@@ -58,7 +59,7 @@ gulp.task('javascript', function() {
 });
 
 gulp.task('javascript-library', function() {
-  return gulp.src(mainBowerFiles())
+  return gulp.src(mainBowerFiles('**/*.js'))
   .pipe(sourcemaps.init())
   .pipe(concat('library.js'))
   .pipe(gulp.dest('js'))
@@ -85,8 +86,11 @@ gulp.task('style-lint', function () {
 });
 
 gulp.task('style', function() {
-  return gulp.src('css/site.styl')
+  var filter = gulpFilter('**/*.styl', {restore: true});
+
+  return gulp.src(mainBowerFiles('**/*.css').concat(['css/site.styl']))
   .pipe(plumber())
+  .pipe(filter)
   .pipe(stylus({
       use: [
         swiss()
@@ -97,6 +101,8 @@ gulp.task('style', function() {
     browsers: ['last 5 versions'],
   }))
   .on('error', errorNotify)
+  .pipe(filter.restore)
+  .pipe(concat('site.css'))
   .pipe(gulp.dest('css'))
   .pipe(rename({suffix: '.min'}))
   .pipe(minifycss())
