@@ -5,7 +5,6 @@ var notify = require('gulp-notify');
 var util = require('gulp-util');
 var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
-var gulpFilter = require('gulp-filter');
 
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
