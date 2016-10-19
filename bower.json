@@ -1,0 +1,20 @@
+{
+  "name": "globie-wordpress-starter-pack",
+  "description": "so I heard you wanna make a wordpress site",
+  "main": "gulpfile.js",
+  "authors": [
+    "interglobalvision"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/interglobalvision/globie-wordpress-starter-pack",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lazysizes": "^2.0.4"
+  }
+}
