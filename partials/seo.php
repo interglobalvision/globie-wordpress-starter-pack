@@ -1,11 +1,11 @@
 <?php
-$twitter = IGV_get_option('_igv_socialmedia_twitter');
+$twitter = IGV_get_option('_igv_site_options', '_igv_socialmedia_twitter');
 
 if ($twitter) {
   echo '<meta name="twitter:site" value="' . $twitter . '">';
 }
 
-$fbAppId = IGV_get_option('_igv_og_fb_app_id');
+$fbAppId = IGV_get_option('_igv_site_options', '_igv_og_fb_app_id');
 
 if ($fbAppId) {
   echo '<meta name="fb:app_id" value="' . $fbAppId . '">';
@@ -22,7 +22,7 @@ if (has_post_thumbnail($post)) {
   $thumb = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'opengraph');
 }
 
-$ogImage = wp_get_attachment_image_src(IGV_get_option('_igv_og_image_id'), 'opengraph');
+$ogImage = wp_get_attachment_image_src(IGV_get_option('_igv_site_options', '_igv_og_image_id'), 'opengraph');
 
 if (!empty($thumb) && is_single()) {
   echo '<meta property="og:image" content="' . $thumb[0] . '" />';

@@ -1,9 +1,9 @@
 <?php
-  $facebook = IGV_get_option('_igv_socialmedia_facebook_url');
-  $twitter = IGV_get_option('_igv_socialmedia_twitter');
-  $instagram = IGV_get_option('_igv_socialmedia_instagram');
+  $facebook = IGV_get_option('_igv_site_options', '_igv_socialmedia_facebook_url');
+  $twitter = IGV_get_option('_igv_site_options', '_igv_socialmedia_twitter');
+  $instagram = IGV_get_option('_igv_site_options', '_igv_socialmedia_instagram');
 
-  $logo = IGV_get_option('_igv_metadata_logo');
+  $logo = IGV_get_option('_igv_site_options', '_igv_metadata_logo');
 ?>
 <script type="application/ld+json">
   {
