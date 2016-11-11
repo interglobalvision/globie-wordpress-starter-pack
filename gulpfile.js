@@ -16,7 +16,7 @@ var cache = require('gulp-cached');
 
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var swiss = require('kouto-swiss');
 var stylint = require('gulp-stylint');
 
@@ -99,7 +99,7 @@ gulp.task('style', function() {
   .on('error', errorNotify)
   .pipe(gulp.dest('css'))
   .pipe(rename({suffix: '.min'}))
-  .pipe(minifycss())
+  .pipe(cleanCSS())
   .on('error', errorNotify)
   .pipe(gulp.dest('css'))
   .pipe(notify({ message: 'Style task complete' }));
