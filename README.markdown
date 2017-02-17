@@ -19,12 +19,12 @@ Tech this uses [thnx]:
 
 #### Setup
 
-- `npm install`
-- `gulp build` or `gulp`
+- `npm install` or `yarn`
 - check composer.json if you want moment or other things
 - `composer install`
 - check bower.json if you want to add more than just lazysizes
 - `bower install`
+- `gulp build` or `gulp`
 
 #### Notes
 
