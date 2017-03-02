@@ -29,16 +29,6 @@ function errorNotify(error){
   util.log(util.colors.red('Error'), error.message);
 }
 
-// PHP
-
-gulp.task('phplint', function() {
-  return gulp.src(['**/*.php', '!lib/thirdparty/**/*.php', '!lib/CMB2/**/*.php'])
-  .pipe(cache('php'))
-  .pipe(phplint())
-  .on('error', errorNotify)
-  .pipe(notify({ message: 'PHP lint task complete' }));
-});
-
 // JAVASCRIPT
 
 gulp.task('javascript', function() {
@@ -135,7 +125,6 @@ gulp.task('watch', function() {
   gulp.watch(['css/*.styl', 'css/responsive/*.styl'], ['style']);
   gulp.watch(['css/*.styl', 'css/responsive/*.styl'], ['style-lint']);
   gulp.watch(['img/src/*.*'], ['images']);
-  gulp.watch(['**/*.php', '!lib/thirdparty/**/*.php', '!lib/CMB2/**/*.php'], ['phplint']);
 });
 
 gulp.task('build', ['build-style', 'javascript', 'javascript-library']);
