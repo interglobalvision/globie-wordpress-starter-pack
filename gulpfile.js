@@ -22,8 +22,6 @@ var stylint = require('gulp-stylint');
 
 var imagemin = require('gulp-imagemin');
 
-var phplint = require('gulp-phplint');
-
 function errorNotify(error){
   notify.onError("Error: <%= error.message %>")
   util.log(util.colors.red('Error'), error.message);
