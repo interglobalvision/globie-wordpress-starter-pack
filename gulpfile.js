@@ -36,7 +36,6 @@ gulp.task('javascript', function() {
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe(jscs('.jscsrc'))
   .on('error', errorNotify)
-  .pipe(gulp.dest('dist/js'))
   .pipe(uglify())
   .on('error', errorNotify)
   .pipe(rename({suffix: '.min'}))

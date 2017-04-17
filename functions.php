@@ -3,14 +3,14 @@
 // Enqueue
 
 function scripts_and_styles_method() {
-  $templateuri = get_template_directory_uri() . '/dist/js/';
+  $templateuri = get_template_directory_uri();
 
   if (WP_DEBUG) {
-    $javascriptLibrary = $templateuri . 'library.js';
-    $javascriptMain = $templateuri . 'main.js';
+    $javascriptLibrary = $templateuri . '/dist/js/library.js';
+    $javascriptMain = $templateuri . '/src/js/main.js';
   } else {
-    $javascriptLibrary = $templateuri . 'library.min.js';
-    $javascriptMain = $templateuri . 'main.min.js';
+    $javascriptLibrary = $templateuri . '/dist/js/library.min.js';
+    $javascriptMain = $templateuri . '/dist/js/main.min.js';
   }
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
