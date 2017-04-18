@@ -3,34 +3,36 @@
 // Enqueue
 
 function scripts_and_styles_method() {
+  $templateuri = get_template_directory_uri();
 
-  $templateuri = get_template_directory_uri() . '/js/';
-
-  // library.js is to bundle plugins. my.js is your scripts. enqueue more files as needed
-  $jslib = $templateuri . 'library.js';
-  wp_enqueue_script( 'jslib', $jslib,'','',true);
-
-  $myscripts = $templateuri . 'main.js';
-  wp_register_script( 'myscripts', $myscripts );
-
-  $is_admin = current_user_can('administrator') ? 1 : 0;
-  $jsVars = array(
-  	'siteUrl' => home_url(),
-  	'themeUrl' => get_template_directory_uri(),
-  	'isAdmin' => $is_admin,
-  );
-
-  wp_localize_script( 'myscripts', 'WP', $jsVars );
-  wp_enqueue_script( 'myscripts', $myscripts,'','',true);
-
-  // enqueue stylesheet here. file does not exist until stylus file is processed
-  wp_enqueue_style( 'site', get_stylesheet_directory_uri() . '/css/site.css' );
-
-  // dashicons for admin
-  if(is_admin()){
-    wp_enqueue_style( 'dashicons' );
+  if (WP_DEBUG) {
+    $javascriptLibrary = $templateuri . '/dist/js/library.js';
+    $javascriptMain = $templateuri . '/src/js/main.js';
+  } else {
+    $javascriptLibrary = $templateuri . '/dist/js/library.min.js';
+    $javascriptMain = $templateuri . '/dist/js/main.min.js';
   }
 
+  $is_admin = current_user_can('administrator') ? 1 : 0;
+
+  $javascriptVars = array(
+    'siteUrl' => home_url(),
+    'themeUrl' => get_template_directory_uri(),
+    'isAdmin' => $is_admin,
+  );
+
+  wp_enqueue_script('javascript-library', $javascriptLibrary, '', '', true);
+
+  wp_register_script('javascript-main', $javascriptMain);
+  wp_localize_script('javascript-main', 'WP', $javascriptVars);
+  wp_enqueue_script('javascript-main', $javascriptMain, '', '', true);
+
+  wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.min.css' );
+
+  // dashicons for admin
+  if (is_admin()) {
+    wp_enqueue_style( 'dashicons' );
+  }
 }
 add_action('wp_enqueue_scripts', 'scripts_and_styles_method');
 
@@ -41,7 +43,7 @@ get_template_part( 'lib/thumbnail-sizes' );
 // Register Nav Menus
 /*
 register_nav_menus( array(
-	'menu_location' => 'Location Name',
+  'menu_location' => 'Location Name',
 ) );
 */
 
