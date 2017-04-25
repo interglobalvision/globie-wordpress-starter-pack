@@ -1,129 +1,148 @@
 var gulp = require('gulp');
-var watch = require('gulp-watch');
-var rename = require('gulp-rename');
-var notify = require('gulp-notify');
+
+// GENERAL UTILTY PACKAGES
 var util = require('gulp-util');
 var plumber = require('gulp-plumber');
+var notifier = require('node-notifier');
+var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 
+// BOWER PACKAGES
+var mainBowerFiles = require('main-bower-files');
+
+// IMAGE PACKAGES
+var imagemin = require('gulp-imagemin');
+var changed = require('gulp-changed');
+
+// JS PACKAGES
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
-var mainBowerFiles = require('main-bower-files');
 
-var cache = require('gulp-cached');
-
+// STYL PACKAGES
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var swiss = require('kouto-swiss');
 var stylint = require('gulp-stylint');
 
-var imagemin = require('gulp-imagemin');
-
-function errorNotify(error){
-  notify.onError("Error: <%= error.message %>")
-  util.log(util.colors.red('Error'), error.message);
+// PATHS
+var source = {
+  javascript: 'src/js/main.js',
+  stylus: 'src/styl/site.styl',
 }
 
-// JAVASCRIPT
+var watch = {
+  javascript: 'src/js/main.js',
+  stylus: ['src/styl/**.styl', 'src/styl/responsive/**.styl'],
+  images: 'src/img/**.*'
+}
 
+var destination = {
+  javascript: 'dist/js',
+  css: 'dist/css',
+  stylusLibrary: 'src/styl/library',
+  images: 'dist/img'
+}
+
+// FUNCTIONS
+function handleErrors(error) {
+  util.log(util.colors.red(error.name + ' (' + error.plugin + '): ' + error.message));
+
+  notifier.notify({
+    title: error.name,
+    subtitle: error.plugin,
+    message: error.message,
+    wait: true,
+    sound: true
+  });
+
+  this.emit('end');
+}
+
+// JAVASCRIPT TASKS
 gulp.task('javascript', function() {
-  return gulp.src('src/js/main.js')
+  return gulp.src(source.javascript)
+  .pipe(plumber(handleErrors))
   .pipe(sourcemaps.init())
-  .pipe(jshint())
-  .pipe(jshint.reporter('jshint-stylish'))
-  .pipe(jscs('.jscsrc'))
-  .on('error', errorNotify)
-  .pipe(uglify())
-  .on('error', errorNotify)
+  .pipe(uglify({mangle: false}))
   .pipe(rename({suffix: '.min'}))
   .pipe(sourcemaps.write('/'))
-  .on('error', errorNotify)
-  .pipe(gulp.dest('dist/js'))
-  .pipe(notify({ message: 'Javascript task complete' }));
+  .pipe(gulp.dest(destination.javascript));
+});
+
+gulp.task('javascript-lint', function() {
+  return gulp.src(source.javascript)
+  .pipe(plumber(handleErrors))
+  .pipe(jshint())
+  .pipe(jshint.reporter('jshint-stylish'))
+  .pipe(jscs('.jscsrc'));
 });
 
 gulp.task('javascript-library', function() {
   return gulp.src(mainBowerFiles('**/*.js'))
+  .pipe(plumber(handleErrors))
   .pipe(sourcemaps.init())
   .pipe(concat('library.js'))
-  .pipe(gulp.dest('dist/js'))
+  .pipe(gulp.dest(destination.javascript))
   .pipe(uglify({mangle: false}))
-  .on('error', errorNotify)
   .pipe(rename({suffix: '.min'}))
   .pipe(sourcemaps.write('/'))
-  .on('error', errorNotify)
-  .pipe(gulp.dest('dist/js'))
-  .pipe(notify({ message: 'Javascript Library task complete' }));
+  .pipe(gulp.dest(destination.javascript));
 });
 
-// STYLES
-
-gulp.task('style-lint', function () {
-  return gulp.src(['src/styl/site.styl', 'src/styl/responsive/*.styl'])
-  .pipe(cache('style-lint'))
-  .pipe(plumber())
-  .pipe(stylint({config: '.stylintrc'}))
-  .on('error', errorNotify)
-  .pipe(stylint.reporter())
-  .on('error', errorNotify)
-  .pipe(notify({ message: 'Style lint task complete' }));
-});
-
+// STYLE TASKS
 gulp.task('style', function() {
-  return gulp.src(['src/styl/site.styl'])
-  .pipe(plumber())
+  return gulp.src(source.stylus)
+  .pipe(plumber(handleErrors))
   .pipe(stylus({
     use: [
       swiss()
     ],
   }))
-  .on('error', errorNotify)
   .pipe(autoprefixer({
     browsers: ['last 5 versions'],
   }))
-  .on('error', errorNotify)
   .pipe(rename({suffix: '.min'}))
   .pipe(cleanCSS())
-  .on('error', errorNotify)
-  .pipe(gulp.dest('dist/css'))
-  .pipe(notify({ message: 'Style task complete' }));
+  .pipe(gulp.dest(destination.css));
+});
+
+gulp.task('style-lint', function () {
+  return gulp.src(watch.stylus)
+  .pipe(plumber(handleErrors))
+  .pipe(stylint({config: '.stylintrc'}))
+  .pipe(stylint.reporter());
 });
 
 gulp.task('style-library', function() {
   return gulp.src(mainBowerFiles('**/*.css'))
-  .pipe(plumber())
+  .pipe(plumber(handleErrors))
   .pipe(concat('library.styl'))
-  .on('error', errorNotify)
-  .pipe(gulp.dest('src/styl/library'))
-  .pipe(notify({ message: 'Style library task complete' }));
+  .pipe(gulp.dest(destination.stylusLibrary));
 });
 
-// IMAGES
-
+// IMAGE TASKS
 gulp.task('images', function () {
   return gulp.src('src/img/**.*')
-  .pipe(cache('images'))
-  .pipe(plumber())
+  .pipe(changed(destination.images))
+  .pipe(plumber(handleErrors))
   .pipe(imagemin({
     progressive: false
   }))
-  .on('error', errorNotify)
-  .pipe(gulp.dest('dist/img'))
-	.pipe(notify({ message: 'Images task complete' }));
+  .pipe(gulp.dest(destination.images));
 });
 
-// TASKS
-
-gulp.task('watch', function() {
-  gulp.watch(['src/js/main.js'], ['javascript']);
-  gulp.watch(['src/styl/**.styl', 'src/styl/responsive/**.styl'], ['style']);
-  gulp.watch(['src/styl/**.styl', 'src/styl/responsive/**.styl'], ['style-lint']);
-  gulp.watch(['src/img/**.*'], ['images']);
+// DEFAULT WATCH
+gulp.task('default', function() {
+  var javascriptWatch = gulp.watch(watch.javascript, ['javascript', 'javascript-lint']);
+  var stylusWatch = gulp.watch(watch.stylus, ['style', 'style-lint']);
+  var imageWatch = gulp.watch(watch.images, ['images']);
 });
 
+// BUILD STACKS
 gulp.task('build', ['style', 'style-library', 'javascript', 'javascript-library', 'images']);
 gulp.task('build-style', ['style-library', 'style']);
-gulp.task('default', ['watch']);
+gulp.task('build-javascript', ['javascript-library', 'javascript']);
+gulp.task('post-bower-install', ['javascript-library', 'style-library', 'style']);
