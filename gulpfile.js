@@ -143,8 +143,14 @@ gulp.task('default', function() {
 });
 
 // BUILD STACKS
-gulp.task('build', ['style', 'style-library', 'javascript', 'javascript-library', 'images']);
-gulp.task('build-style', ['style-library', 'style']);
+gulp.task('build', function() {
+  runSequence('style-library', ['style', 'javascript', 'javascript-library', 'images']);
+});
+
+gulp.task('build-style', function() {
+  runSequence('style-library', ['style']);
+});
+
 gulp.task('build-javascript', ['javascript-library', 'javascript']);
 
 // POST BOWER
