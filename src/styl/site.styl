@@ -1,7 +1,7 @@
   // styl property ordering: https://github.com/rossPatton/stylint/blob/master/src/data/ordering.json
 
 @import 'kouto-swiss'
-@import 'library/helpers'
+@import '../../globie-library/helpers'
 
 // ******************************************************
 
@@ -21,13 +21,44 @@ normalize()
 
 // GRID
 
-@import 'library/grid'
+@import '../../globie-library/grid'
 
 // ******************************************************
 
 // TYPOGRAPHY
 
-@import 'library/type'
+@import '../../globie-library/type'
+
+$font-size-larger = 1.3rem
+
+$font-leading-basic = 1.35
+$font-leading-tighter = 1.15
+$font-leading-larger = 1.45
+
+$font-tracking-basic = .001em
+$font-tracking-wider = .05em
+
+html
+  font-family: $font-sans
+  letter-spacing: $font-tracking-basic
+
+body
+  line-height: $font-leading-basic
+
+.font-sans
+  font-family: $font-sans
+
+.font-serif
+  font-family: $font-serif
+
+.font-larger
+  font-size: $font-size-larger
+
+.line-tighter
+  line-height: $font-leading-tighter
+
+.line-larger
+  line-height: $font-leading-larger
 
 // ******************************************************
 
@@ -102,7 +133,7 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   .mobile-only
     display: none !important
 
-  @import 'responsive/tablet'
+  @import 'responsive/tablet-portrait'
 
 @media screen and (min-width: 1024px)
 
@@ -126,19 +157,25 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   .desktop-only
     display: initial !important
 
-  @import 'responsive/desktop'
+  @import 'responsive/tablet-landscape'
 
 @media screen and (min-width: 1280px)
 
   grid(1200px)
 
+  @import 'responsive/laptop'
+
 @media screen and (min-width: 1366px)
 
-  grid(1300px)
+  grid(1300px, false, xl)
+
+  @import 'responsive/desktop'
 
 @media screen and (min-width: 1680px)
 
   grid(1600px)
+
+  @import 'responsive/hd'
 
 @media screen and (min-width: 1920px)
 
