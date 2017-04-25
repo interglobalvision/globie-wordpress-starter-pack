@@ -6,6 +6,7 @@ var plumber = require('gulp-plumber');
 var notifier = require('node-notifier');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
+var runSequence = require('run-sequence');
 
 // BOWER PACKAGES
 var mainBowerFiles = require('main-bower-files');
@@ -145,4 +146,8 @@ gulp.task('default', function() {
 gulp.task('build', ['style', 'style-library', 'javascript', 'javascript-library', 'images']);
 gulp.task('build-style', ['style-library', 'style']);
 gulp.task('build-javascript', ['javascript-library', 'javascript']);
-gulp.task('post-bower-install', ['javascript-library', 'style-library', 'style']);
+
+// POST BOWER
+gulp.task('post-bower-install', function() {
+  runSequence('style-library', ['javascript-library', 'style']);
+});

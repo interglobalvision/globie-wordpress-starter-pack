@@ -19,9 +19,9 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "3.1.1",
+    "gulp-changed": "^3.0.0",
     "gulp-clean-css": "^3.0.4",
     "gulp-concat": "~2.6.0",
-    "gulp-changed": "^3.0.0",
     "gulp-imagemin": "~3.2.0",
     "gulp-jscs": "~4.0.0",
     "gulp-jshint": "~2.0.0",
@@ -37,6 +37,7 @@
     "jshint-stylish": "~2.2.1",
     "kouto-swiss": "~1.1.0",
     "main-bower-files": "^2.13.1",
-    "node-notifier": "^5.1.2"
+    "node-notifier": "^5.1.2",
+    "run-sequence": "^1.2.2"
   }
 }

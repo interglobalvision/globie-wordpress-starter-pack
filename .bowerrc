@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "postinstall": "gulp post-bower-install"
+  },
+  "ignoredDependencies": [
+    "jquery"
+  ]
+}
