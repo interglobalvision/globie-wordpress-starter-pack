@@ -24,7 +24,7 @@ var sourcemaps = require('gulp-sourcemaps');
 // STYL PACKAGES
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
-var cleanCSS = require('gulp-clean-css');
+var cssnano = require('gulp-cssnano');
 var swiss = require('kouto-swiss');
 var stylint = require('gulp-stylint');
 
@@ -106,7 +106,7 @@ gulp.task('style', function() {
     browsers: ['last 5 versions'],
   }))
   .pipe(rename({suffix: '.min'}))
-  .pipe(cleanCSS())
+  .pipe(cssnano())
   .pipe(gulp.dest(destination.css));
 });
 
