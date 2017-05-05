@@ -41,7 +41,7 @@
   "mixed": true,
   "namingConvention": "lowercase-dash",
   "namingConventionStrict": false,
-  "noImportant": true,
+  "noImportant": false,
   "none": {
     "error": true,
     "expect": "never"
