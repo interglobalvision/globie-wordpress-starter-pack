@@ -1,10 +1,6 @@
-<?php
-get_header();
-?>
+<main class="grid-test">
 
-<main id="main-content" class="grid-test">
-
-  <section id="posts" class="container margin-bottom-basic">
+  <section class="container margin-bottom-basic">
 
     <div class="margin-bottom-basic">
       <div class="grid-row">.grid-row</div>
@@ -27,13 +23,13 @@ get_header();
           <div class="item-s-8">
             <strong>.item-s-8</strong>
             <p>
-              The first crosstown knot is, in its own way, an earthquake. 
+              The first crosstown knot is, in its own way, an earthquake.
             </p>
           </div>
           <div class="item-s-4">
             <strong>.item-s-4</strong>
             <p>
-              The first crosstown knot is, in its own way, an earthquake. 
+              The first crosstown knot is, in its own way, an earthquake.
             </p>
           </div>
         </div>
@@ -146,7 +142,3 @@ get_header();
 
   </section>
 </main>
-
-<?php
-get_footer();
-?>
