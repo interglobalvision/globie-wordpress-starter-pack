@@ -3,13 +3,20 @@
 // to replace file_get_contents
 function url_get_contents($Url) {
   if (!function_exists('curl_init')){
-      die('CURL is not installed!');
+    die('CURL is not installed!');
   }
+
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $Url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   $output = curl_exec($ch);
+  $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   curl_close($ch);
+
+  if ($httpcode !== 200) {
+    return false;
+  }
+
   return $output;
 }
 
