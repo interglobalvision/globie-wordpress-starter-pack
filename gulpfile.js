@@ -129,9 +129,12 @@ gulp.task('images', function () {
   return gulp.src('src/img/**.*')
   .pipe(changed(destination.images))
   .pipe(plumber(handleErrors))
-  .pipe(imagemin({
-    progressive: false
-  }))
+  .pipe(imagemin([
+    imagemin.gifsicle({interlaced: false, optimizationLevel: 1}),
+    imagemin.jpegtran({progressive: false, arithmetic: false}),
+    imagemin.optipng({optimizationLevel: 4, bitDepthReduction: true, colorTypeReduction: true, paletteReduction: true}),
+    imagemin.svgo({plugins: [{cleanupIDs: false}]})
+  ]))
   .pipe(gulp.dest(destination.images));
 });
 
