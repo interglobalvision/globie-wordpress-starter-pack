@@ -9,15 +9,13 @@ module.exports = {
     filename: 'main.js'
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
-        }
+    loaders: [{
+      test: /\.js$/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['babili','es2015']
       }
-    ]
+    }]
   },
   stats: {
     colors: true
