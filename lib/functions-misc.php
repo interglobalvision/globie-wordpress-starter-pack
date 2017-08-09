@@ -13,20 +13,14 @@ add_filter( 'the_generator', 'no_generator' );
 
 // Show thumbnails in admin lists
 add_filter('manage_posts_columns', 'new_add_post_thumbnail_column');
-function new_add_post_thumbnail_column($cols){
+function new_add_post_thumbnail_column($cols) {
   $cols['new_post_thumb'] = __('Thumbnail');
   return $cols;
 }
 add_action('manage_posts_custom_column', 'new_display_post_thumbnail_column', 5, 2);
-function new_display_post_thumbnail_column($col, $id){
-  switch($col) {
-  case 'new_post_thumb':
-    if ( function_exists('the_post_thumbnail') ) {
-      echo the_post_thumbnail( 'admin-thumb' );
-    }
-    else
-      echo 'Not supported in theme';
-    break;
+function new_display_post_thumbnail_column($col, $id) {
+  if ($col === 'new_post_thumb' && function_exists('the_post_thumbnail')) {
+    echo the_post_thumbnail( 'admin-thumb' );
   }
 }
 
