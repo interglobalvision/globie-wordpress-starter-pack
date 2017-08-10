@@ -4,9 +4,10 @@ v 1.7.6
 
 Starting point for our wordpress themes
 
-`git clone git@github.com:interglobalvision/globie-wordpress-starter-pack.git`
 
-Tech this uses [thnx]:
+## Tech
+
+This works thanks to the great work of:
 
 - http://gulpjs.com/
 - https://getcomposer.org/
@@ -17,7 +18,31 @@ Tech this uses [thnx]:
 
 ---
 
-#### Setup
+## Create a new theme
+
+```
+git clone git@github.com:interglobalvision/globie-wordpress-starter-pack.git /path/to/new-theme
+cd /path/to/new-theme
+rm -rf .git
+git init
+```
+
+## Dev
+
+```
+git clone git@github.com:interglobalvision/globie-wordpress-starter-pack.git /path/to/new-theme
+cd /path/to/new-theme
+```
+
+Locally exclude built files and stuff. Edit `.git/info/exclude`:
+
+```
+composer.lock
+vendor
+dist/
+```
+
+## Setup
 
 - `npm install` or `yarn`
 - check composer.json if you want moment or other things
@@ -26,7 +51,9 @@ Tech this uses [thnx]:
 - `bower install`
 - `gulp build` or `gulp`
 
-#### Notes
+
+
+## Notes
 
 - When you install bower packages make sure to `--save` into the `bower.json` otherwise the gulpfile will fail to find and import correctly into the libraries
 
