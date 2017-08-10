@@ -45,7 +45,7 @@ get_template_part( 'lib/thumbnail-sizes' );
 register_nav_menus( array(
   'menu_location' => 'Location Name',
 ) );
-*/
+ */
 
 // Add third party PHP libs
 

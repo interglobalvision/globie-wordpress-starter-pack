@@ -7,15 +7,15 @@
 class IGV_Admin {
 
   /**
-    * Option key, and option page slug
-    * @var string
-    */
+   * Option key, and option page slug
+   * @var string
+   */
   private $key = 'IGV_options';
 
   /**
-    * Options page metabox id
-    * @var string
-    */
+   * Options page metabox id
+   * @var string
+   */
   private $metabox_id = 'IGV_option_metabox';
 
   /**
@@ -79,12 +79,12 @@ class IGV_Admin {
    * @since  0.1.0
    */
   public function admin_page_display() {
-    ?>
+?>
     <div class="wrap cmb2-options-page <?php echo $this->key; ?>">
       <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
       <?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
     </div>
-    <?php
+<?php
   }
 
   /**

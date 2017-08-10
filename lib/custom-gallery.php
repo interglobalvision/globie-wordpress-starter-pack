@@ -1,4 +1,5 @@
 <?php
+
 remove_shortcode('gallery', 'gallery_shortcode');
 function my_gallery_shortcode($attr) {
   $post = get_post();

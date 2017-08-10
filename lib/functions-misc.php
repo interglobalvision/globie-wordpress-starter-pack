@@ -13,29 +13,23 @@ add_filter( 'the_generator', 'no_generator' );
 
 // Show thumbnails in admin lists
 add_filter('manage_posts_columns', 'new_add_post_thumbnail_column');
-function new_add_post_thumbnail_column($cols){
+function new_add_post_thumbnail_column($cols) {
   $cols['new_post_thumb'] = __('Thumbnail');
   return $cols;
 }
 add_action('manage_posts_custom_column', 'new_display_post_thumbnail_column', 5, 2);
-function new_display_post_thumbnail_column($col, $id){
-  switch($col){
-    case 'new_post_thumb':
-    if( function_exists('the_post_thumbnail') ) {
-      echo the_post_thumbnail( 'admin-thumb' );
-      }
-    else
-    echo 'Not supported in theme';
-    break;
+function new_display_post_thumbnail_column($col, $id) {
+  if ($col === 'new_post_thumb' && function_exists('the_post_thumbnail')) {
+    echo the_post_thumbnail( 'admin-thumb' );
   }
 }
 
 // remove automatic <a> links from images in blog
 function wpb_imagelink_setup() {
-	$image_set = get_option( 'image_default_link_type' );
-	if($image_set !== 'none') {
-		update_option('image_default_link_type', 'none');
-	}
+  $image_set = get_option( 'image_default_link_type' );
+  if ($image_set !== 'none') {
+    update_option('image_default_link_type', 'none');
+  }
 }
 add_action('admin_init', 'wpb_imagelink_setup', 10);
 
@@ -54,4 +48,4 @@ function custom_login_logo() {
   echo '<style type="text/css">h1 a { background-image:url(' . get_bloginfo( 'template_directory' ) . '/images/login-logo.png) !important; background-size:300px auto !important; width:300px !important; }</style>';
 }
 add_action( 'login_head', 'custom_login_logo' );
-*/
+ */
