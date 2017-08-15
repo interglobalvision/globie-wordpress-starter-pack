@@ -54,7 +54,6 @@ class IGV_Admin {
    */
   public function hooks() {
     add_action( 'admin_init', array( $this, 'init' ) );
-    add_action( 'admin_menu', array( $this, 'add_options_page' ) );
     add_action( 'cmb2_init', array( $this, 'add_options_page_metabox' ) );
   }
 
@@ -64,14 +63,6 @@ class IGV_Admin {
    */
   public function init() {
     register_setting( $this->key, $this->key );
-  }
-
-  /**
-   * Add menu options page
-   * @since 0.1.0
-   */
-  public function add_options_page() {
-    $this->options_page = add_menu_page( $this->title, $this->title, 'upload_files', $this->key, array( $this, 'admin_page_display' ) );
   }
 
   /**
