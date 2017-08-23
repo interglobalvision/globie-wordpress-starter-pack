@@ -49,7 +49,6 @@ function igv_register_theme_options_metabox() {
      * Several of these parameters are passed along to add_menu_page()/add_submenu_page().
      */
     'option_key'      => $prefix . 'site_options', // The option key and admin menu page slug.
-    'icon_url'        => 'dashicons-palmtree', // Menu icon. Only applicable if 'parent_slug' is left empty.
     // 'menu_title'      => esc_html__( 'Options', 'cmb2' ), // Falls back to 'title' (above).
     // 'parent_slug'     => 'themes.php', // Make options page a submenu item of the themes menu.
     'capability'      => 'manage_options', // Cap required to view options-page.
