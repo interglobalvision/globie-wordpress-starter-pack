@@ -74,7 +74,21 @@
           </p>
         </div>
 
-        <div class="grid-item margin-bottom-small">
+        <div class="grid-item margin-bottom-small text-column text-columns-m-3">
+          <h3>
+            <strong>.text-columns</strong>
+          </h3>
+          <p>
+            If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.
+          </p>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+          <p>
+            If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.
+          </p>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+          <p>
+            If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.
+          </p>
           <p>
             If this was somewhat unclear, the sequent fire comes from a landless pickle. In modern times fretful jams show us how beliefs can be minibuses. Nowhere is it disputed that the involved wound reveals itself as a knickered stew to those who look. Few can name a polished turkish that isn't a quaggy passenger.
           </p>
