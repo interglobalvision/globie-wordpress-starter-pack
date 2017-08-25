@@ -114,10 +114,13 @@ grid-maker($width = false, $gutter = false, $size = false, $cols = 12)
   if $gutter
     .grid-item
       padding: 0 ( $gutter / 2 )
+    .text-columns
+      column-gap: $gutter
 
   // COLUMN SIZES & OFFSETS
 
   if $gutter and $size
+  
     for offset in 0..($cols - 1)
       .grid-row
         .offset-{$size}-{offset}
@@ -130,6 +133,10 @@ grid-maker($width = false, $gutter = false, $size = false, $cols = 12)
         max-width: ( 100% / $cols ) * col
       .grid-column > .item-{$size}-{col}
         max-height: ( 100% / $cols ) * col
+
+    for count in 1..4
+      .text-columns-{$size}-{count}
+        column-count: count
 
 // MARGINS & PADDING
 
@@ -211,4 +218,3 @@ space-maker($micro = false, $tiny = false, $small = false, $basic = false, $mid 
     background: lightblue
   .grid-item
     border-style: dashed
-
