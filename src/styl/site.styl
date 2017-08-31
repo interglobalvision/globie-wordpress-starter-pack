@@ -25,6 +25,16 @@ normalize()
 
 // ******************************************************
 
+// FONTS
+
+@import 'fonts/fonts'
+
+$font-sans = font-stack('Helvetica');
+$font-serif = font-stack('Georgia');
+
+// ******************************************************
+
+
 // TYPOGRAPHY
 
 @import '../../globie-library/type'
@@ -99,15 +109,17 @@ $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
 $font-size-basic = 12px
-$font-size-h1 = 28px
-$font-size-h2 = 21px
-$font-size-h3 = 16px
+$font-size-extra = 48px
+$font-size-large = 36px
+$font-size-mid = 24px
+$font-size-small = 18px
+$font-size-tiny = 8px
 
 grid-maker(96%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
+font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
 
 @import 'responsive/mobile'
 
