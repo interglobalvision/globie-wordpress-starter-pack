@@ -179,7 +179,9 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1366px)
 
-  grid-maker(1300px, false, xl)
+  $gutter = 26px
+
+  grid-maker(1300px, $gutter, xl)
 
   @import 'responsive/desktop'
 
