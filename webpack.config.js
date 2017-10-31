@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-//const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-console.log(path.resolve(__dirname, 'dist/js'));
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: './src/js/main.js',
@@ -22,12 +22,23 @@ module.exports = {
           presets: ['es2015','babel-preset-minify']
         },
       }, {
-        test: /\.styl$/,
-        loader: 'style-loader!css-loader!stylus-loader',
-        exclude: /node_modules/,
+        test: /\.styl/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'stylus-loader'],
+        })
       }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin('../css/site.css'),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.site\.min\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    })
+  ],
   stats: {
     colors: true
   },
