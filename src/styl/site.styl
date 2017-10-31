@@ -1,7 +1,5 @@
-  // styl property ordering: https://github.com/rossPatton/stylint/blob/master/src/data/ordering.json
-
-@import 'kouto-swiss'
-@import '../../globie-library/helpers'
+@import '~kouto-swiss/index.styl'
+@import '~globie-styl-library/helpers'
 
 // ******************************************************
 
@@ -11,33 +9,27 @@ meyer-reset()
 box-sizing-reset()
 normalize()
 
-// ******************************************************
-
-// BOWER LIBRARY
-
-@import 'library/library'
 
 // ******************************************************
 
 // GRID
 
-@import '../../globie-library/grid'
+@import '~globie-styl-library/grid'
 
 // ******************************************************
 
 // FONTS
-
 @import 'fonts/fonts'
 
-$font-sans = font-stack('Helvetica');
-$font-serif = font-stack('Georgia');
+$font-sans = font-stack('Helvetica')
+$font-serif = font-stack('Georgia')
 
 // ******************************************************
 
 
 // TYPOGRAPHY
 
-@import '../../globie-library/type'
+@import '~globie-styl-library/type'
 
 $font-size-larger = 1.3rem
 
