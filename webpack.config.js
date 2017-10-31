@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -28,7 +29,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015','babel-preset-minify']
+          presets: ['es2015']
         },
       }, {
         test: /\.styl/,
@@ -40,13 +41,16 @@ module.exports = {
     ]
   },
   plugins: [
+    new MinifyPlugin({}, {
+      comments: false,
+    }),
     new ExtractTextPlugin('../css/site.css'),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.site\.min\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
-    })
+    }),
   ],
   stats: {
     colors: true
