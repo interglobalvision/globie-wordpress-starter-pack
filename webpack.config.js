@@ -4,7 +4,11 @@ const webpack = require('webpack');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const glob = require('glob');
 
+console.log(path.resolve(__dirname,'src/img/'));
 module.exports = {
   entry: './src/js/main.js',
   output: {
@@ -51,6 +55,24 @@ module.exports = {
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
     }),
+    // Copy the images folder and optimize all the images
+    new CopyWebpackPlugin(
+      [
+        {
+          from: path.resolve(__dirname, 'src/img/'),
+          to: path.resolve(__dirname, 'dist/img/'),
+        },
+      ]),
+    /*
+    new CopyWebpackPlugin([{
+      from: 'dist/img',
+      to: 'dist/img',
+    }]),
+    */
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i
+    })
+
   ],
   stats: {
     colors: true
