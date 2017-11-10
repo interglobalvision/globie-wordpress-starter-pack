@@ -8,7 +8,6 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 
-console.log(path.resolve(__dirname,'src/img/'));
 module.exports = {
   entry: './src/js/main.js',
   output: {
@@ -18,6 +17,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.css', '.styl', '.svg']
   },
+
   module: {
     loaders: [
       {
@@ -44,6 +44,7 @@ module.exports = {
       }
     ]
   },
+
   plugins: [
     new MinifyPlugin({}, {
       comments: false,
@@ -56,27 +57,26 @@ module.exports = {
       canPrint: true
     }),
     // Copy the images folder and optimize all the images
-    new CopyWebpackPlugin(
-      [
-        {
-          from: path.resolve(__dirname, 'src/img/'),
-          to: path.resolve(__dirname, 'dist/img/'),
-        },
-      ]),
-    /*
-    new CopyWebpackPlugin([{
-      from: 'dist/img',
-      to: 'dist/img',
-    }]),
-    */
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'src/img/'),
+        to: path.resolve(__dirname, 'dist/img/'),
+      },
+    ]),
     new ImageminPlugin({
-      test: /\.(jpe?g|png|gif|svg)$/i
-    })
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      gifsicle:{interlaced: false, optimizationLevel: 1},
+      jpegtran:{progressive: false, arithmetic: false},
+      optipng:{optimizationLevel: 4, bitDepthReduction: true, colorTypeReduction: true, paletteReduction: true},
+      svgo:{plugins: [{cleanupIDs: false}]},
+    }),
 
   ],
+
   stats: {
     colors: true
   },
+
   devtool: 'source-map',
   watch: true,
 };
