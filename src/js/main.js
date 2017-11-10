@@ -1,6 +1,9 @@
 /* jshint esversion: 6, browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
 /* global $, document */
 
+// Import dependencies
+import lazySizes from 'lazysizes';
+
 // Import style
 import '../styl/site.styl';
 
@@ -19,6 +22,7 @@ class Site {
   }
 
   onReady() {
+    //lazySizes.init();
 
   }
 
