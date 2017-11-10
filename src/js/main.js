@@ -4,13 +4,23 @@
 // Import style
 import '../styl/site.styl';
 
+// Import modules
+import ShopifyBuy from 'shopify-buy';
+
 class Site {
   constructor() {
     this.mobileThreshold = 601;
 
-    $(window).resize(this.onResize);
+    this.shopClient = ShopifyBuy.buildClient({
+      accessToken: 'bbf8cac808a116296bbae0bf8bf97ba0',
+      domain: 'shop-apt-25.myshopify.com',
+      appId: '924581901'
+    });
 
-    $(document).ready(this.onReady);
+    $(window).resize(this.onResize.bind(this));
+
+    $(document).ready(this.onReady.bind(this));
+
   }
 
   onResize() {
@@ -18,6 +28,15 @@ class Site {
   }
 
   onReady() {
+
+    // fetch a product using resource id
+    this.shopClient.fetchProduct('33448427533')
+      .then(function (product) {
+        console.log(product);
+      })
+      .catch(function () {
+        console.log('Request failed');
+      });
 
   }
 
