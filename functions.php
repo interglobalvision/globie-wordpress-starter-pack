@@ -5,11 +5,7 @@
 function scripts_and_styles_method() {
   $templateuri = get_template_directory_uri();
 
-  if (WP_DEBUG) {
-    $javascriptMain = $templateuri . '/dist/js/main.js';
-  } else {
-    $javascriptMain = $templateuri . '/dist/js/main.min.js';
-  }
+  $javascriptMain = $templateuri . '/dist/js/main.js';
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 

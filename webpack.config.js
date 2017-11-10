@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const MinifyPlugin = require("babel-minify-webpack-plugin");
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -21,18 +21,18 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/, // include .js files
-      enforce: "pre", // preload the jshint loader
+      enforce: 'pre', // preload the jshint loader
       exclude: /node_modules/, // exclude any and all files in the node_modules folder
       use: [
         {
-          loader: "jshint-loader"
+          loader: 'jshint-loader'
         }
       ]
     }, {
       test: /\.js$/,
       loader: 'babel-loader',
       query: {
-        presets: ['es2015']
+        presets: ['es2015',  'minify']
       },
     }, {
       test: /\.styl/,
