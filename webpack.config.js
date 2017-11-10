@@ -19,30 +19,28 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      {
-        test: /\.js$/, // include .js files
-        enforce: "pre", // preload the jshint loader
-        exclude: /node_modules/, // exclude any and all files in the node_modules folder
-        use: [
-          {
-            loader: "jshint-loader"
-          }
-        ]
-      }, {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
-        },
-      }, {
-        test: /\.styl/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'stylus-loader'],
-        })
-      }
-    ]
+    loaders: [{
+      test: /\.js$/, // include .js files
+      enforce: "pre", // preload the jshint loader
+      exclude: /node_modules/, // exclude any and all files in the node_modules folder
+      use: [
+        {
+          loader: "jshint-loader"
+        }
+      ]
+    }, {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['es2015']
+      },
+    }, {
+      test: /\.styl/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', 'stylus-loader'],
+      })
+    }],
   },
 
   plugins: [
