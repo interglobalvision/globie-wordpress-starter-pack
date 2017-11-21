@@ -14,6 +14,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist/js'),
     filename: 'main.js'
   },
+  externals: {
+    "jquery": "jQuery" // We declare jQuery as an externa dependency because we add it thru worpdress enqueue
+  },
   resolve: {
     extensions: ['.js', '.css', '.styl', '.svg']
   },
