@@ -5,13 +5,7 @@
 function scripts_and_styles_method() {
   $templateuri = get_template_directory_uri();
 
-  if (WP_DEBUG) {
-    $javascriptLibrary = $templateuri . '/dist/js/library.js';
-    $javascriptMain = $templateuri . '/src/js/main.js';
-  } else {
-    $javascriptLibrary = $templateuri . '/dist/js/library.min.js';
-    $javascriptMain = $templateuri . '/dist/js/main.min.js';
-  }
+  $javascriptMain = $templateuri . '/dist/js/main.js';
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
@@ -21,13 +15,15 @@ function scripts_and_styles_method() {
     'isAdmin' => $is_admin,
   );
 
-  wp_enqueue_script('javascript-library', $javascriptLibrary, '', '', true);
-
   wp_register_script('javascript-main', $javascriptMain);
   wp_localize_script('javascript-main', 'WP', $javascriptVars);
   wp_enqueue_script('javascript-main', $javascriptMain, '', '', true);
 
-  wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.min.css' );
+  if (WP_DEBUG) {
+    wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.css' );
+  } else {
+    wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.min.css' );
+  }
 
   // dashicons for admin
   if (is_admin()) {

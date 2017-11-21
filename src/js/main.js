@@ -1,34 +1,39 @@
-/* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, jQuery, document, Site, Modernizr */
+/* jshint esversion: 6, browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
+/* global $, document */
 
-Site = {
-  mobileThreshold: 601,
-  init: function() {
-    var _this = this;
+// Import dependencies
+import lazySizes from 'lazysizes';
 
-    $(window).resize(function(){
-      _this.onResize();
-    });
+// Import style
+import '../styl/site.styl';
 
-    $(document).ready(function () {
+class Site {
+  constructor() {
+    this.mobileThreshold = 601;
 
-    });
+    $(window).resize(this.onResize.bind(this));
 
-  },
+    $(document).ready(this.onReady.bind(this));
 
-  onResize: function() {
-    var _this = this;
+  }
 
-  },
+  onResize() {
 
-  fixWidows: function() {
+  }
+
+  onReady() {
+    lazySizes.init();
+
+  }
+
+  fixWidows() {
     // utility class mainly for use on headines to avoid widows [single words on a new line]
     $('.js-fix-widows').each(function(){
       var string = $(this).html();
       string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
       $(this).html(string);
     });
-  },
-};
+  }
+}
 
-Site.init();
+new Site();
