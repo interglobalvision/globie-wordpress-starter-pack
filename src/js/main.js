@@ -2,7 +2,7 @@
 /* global $, document */
 
 // Import dependencies
-// import lazySizes from 'lazysizes';
+import lazySizes from 'lazysizes';
 
 // Import style
 import '../styl/site.styl';
@@ -18,11 +18,11 @@ class Site {
   }
 
   onResize() {
-    
+
   }
 
   onReady() {
-    //lazySizes.init();
+    lazySizes.init();
 
   }
 
