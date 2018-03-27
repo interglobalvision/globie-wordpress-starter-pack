@@ -3,7 +3,6 @@ const webpack = require('webpack');
 
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
@@ -41,7 +40,17 @@ module.exports = {
       test: /\.styl/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', 'stylus-loader'],
+        use: [{
+          loader: 'css-loader',
+          options: {
+            minimize: true,
+          },
+        }, {
+          loader: 'stylus-loader',
+          options: {
+            preferPathResolver: 'webpack', // Faster
+          },
+        }],
       })
     }],
   },
@@ -51,12 +60,6 @@ module.exports = {
       comments: false,
     }),
     new ExtractTextPlugin('../css/site.css'),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.site\.min\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: { discardComments: { removeAll: true } },
-      canPrint: true
-    }),
     // Copy the images folder and optimize all the images
     new CopyWebpackPlugin([
       {
