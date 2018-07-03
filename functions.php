@@ -59,6 +59,7 @@ add_action( 'init', 'composer_autoload', 10 );
 
 get_template_part( 'lib/custom-gallery' );
 get_template_part( 'lib/post-types' );
+get_template_part( 'lib/taxonomies' );
 get_template_part( 'lib/meta-boxes' );
 get_template_part( 'lib/site-options' );
 
