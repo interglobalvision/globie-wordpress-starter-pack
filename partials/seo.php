@@ -6,7 +6,7 @@ if (isset($options['socialmedia_twitter'])) {
 }
 
 if (isset($options['og_fb_app_id'])) {
-  echo '<meta name="fb:app_id" value="' . $options['og_fb_app_id'] . '">';
+  echo '<meta property="fb:app_id" value="' . $options['og_fb_app_id'] . '">';
 }
 
 ?>
