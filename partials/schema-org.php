@@ -5,7 +5,7 @@ $options = get_site_option('_igv_site_options');
 {
   "@context": "http://schema.org",
     "@type": "Organization",
-    "url": "<?php echo site_url(); ?>",
+    "url": "<?php echo home_url(); ?>",
 <?php
 if (isset($options['metadata_logo'])) {
   $image = wp_get_attachment_image_src($options['metadata_logo_id'], 'opengraph');
