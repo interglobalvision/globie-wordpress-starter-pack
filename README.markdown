@@ -75,12 +75,3 @@ Locally exclude built files and stuff. Edit `.git/info/exclude`:
 composer.lock
 dist/
 ```
-
-
-
-
-## Notes
-
-- be here, now
-
-![](http://i.imgur.com/G56ITX7.png)
