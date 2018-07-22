@@ -1,0 +1,22 @@
+@media screen and (min-width: 1024px)
+
+  $gutter = 24px
+
+  $margin-micro = ($gutter / 3)
+  $margin-tiny = ($gutter / 2)
+  $margin-small = ($gutter)
+  $margin-basic = ($gutter * 2)
+  $margin-mid = ($gutter * 3.5)
+  $margin-large = ($gutter * 5)
+
+  $font-size-basic = 16px
+
+  grid-maker(1000px, $gutter, l)
+
+  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+
+  font-sizes($font-size-basic)
+
+  .desktop-only
+    display: initial !important
+

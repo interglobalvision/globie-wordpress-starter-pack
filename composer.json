@@ -8,7 +8,7 @@
   ],
   "require": {
     "webdevstudios/cmb2": "2.2.5",
-    "webdevstudios/cmb2-post-search-field": "*",
-    "fightbulc/moment": "*"
+    "fightbulc/moment": "*",
+    "alexis-magina/cmb2-field-post-search-ajax": "dev-master"
   }
 }

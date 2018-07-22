@@ -91,97 +91,17 @@ img
 
 // MEDIA QUERIES
 
-$gutter = 14px
-
-$margin-micro = ($gutter / 3)
-$margin-tiny = ($gutter / 2)
-$margin-small = ($gutter)
-$margin-basic = ($gutter * 2)
-$margin-mid = ($gutter * 3.5)
-$margin-large = ($gutter * 5)
-
-$font-size-basic = 12px
-$font-size-extra = 48px
-$font-size-large = 36px
-$font-size-mid = 24px
-$font-size-small = 18px
-$font-size-tiny = 8px
-
-grid-maker(96%, $gutter, s)
-
-space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
-
-font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
-
 @import 'responsive/mobile'
 
-@media screen and (min-width: 720px)
+@import 'responsive/tablet-portrait'
 
-  $gutter = 21px
+@import 'responsive/tablet-landscape'
 
-  $margin-micro = ($gutter / 3)
-  $margin-tiny = ($gutter / 2)
-  $margin-small = ($gutter)
-  $margin-basic = ($gutter * 2)
-  $margin-mid = ($gutter * 3.5)
-  $margin-large = ($gutter * 5)
+@import 'responsive/laptop'
 
-  $font-size-basic = 14px
+@import 'responsive/desktop'
 
-  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
-
-  grid-maker(680px, $gutter, m)
-
-  font-sizes($font-size-basic)
-
-  .mobile-only
-    display: none !important
-
-  @import 'responsive/tablet-portrait'
-
-@media screen and (min-width: 1024px)
-
-  $gutter = 24px
-
-  $margin-micro = ($gutter / 3)
-  $margin-tiny = ($gutter / 2)
-  $margin-small = ($gutter)
-  $margin-basic = ($gutter * 2)
-  $margin-mid = ($gutter * 3.5)
-  $margin-large = ($gutter * 5)
-
-  $font-size-basic = 16px
-
-  grid-maker(1000px, $gutter, l)
-
-  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
-
-  font-sizes($font-size-basic)
-
-  .desktop-only
-    display: initial !important
-
-  @import 'responsive/tablet-landscape'
-
-@media screen and (min-width: 1280px)
-
-  grid-maker(1200px)
-
-  @import 'responsive/laptop'
-
-@media screen and (min-width: 1366px)
-
-  $gutter = 26px
-
-  grid-maker(1300px, $gutter, xl)
-
-  @import 'responsive/desktop'
-
-@media screen and (min-width: 1680px)
-
-  grid-maker(1600px)
-
-  @import 'responsive/hd'
+@import 'responsive/hd'
 
 @media screen and (min-width: 1920px)
 
