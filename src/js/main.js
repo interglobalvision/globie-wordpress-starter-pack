@@ -14,23 +14,19 @@ class Site {
     $(window).resize(this.onResize.bind(this));
 
     $(document).ready(this.onReady.bind(this));
-
   }
 
-  onResize() {
-
-  }
+  onResize() {}
 
   onReady() {
     lazySizes.init();
-
   }
 
   fixWidows() {
     // utility class mainly for use on headines to avoid widows [single words on a new line]
-    $('.js-fix-widows').each(function(){
-      var string = $(this).html();
-      string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
+    $('.js-fix-widows').each(function() {
+      let string = $(this).html();
+      string = string.replace(/ ([^ ]*)$/, '&nbsp;$1');
       $(this).html(string);
     });
   }

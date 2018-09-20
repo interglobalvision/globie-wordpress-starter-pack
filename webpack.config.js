@@ -1,13 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 
-// const MinifyPlugin = require('babel-minify-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 
 module.exports = {
+  mode: 'development',
 	entry: './src/js/main.js',
 	output: {
 		path: path.resolve(__dirname, 'dist/js'),
@@ -21,47 +20,45 @@ module.exports = {
 	},
 
 	module: {
-		loaders: [{
+    // FOR JS FILES (PRE)
+    // Used to lint js code
+		rules: [{
 			test: /\.js$/, // include .js files
-			enforce: 'pre', // preload the jshint loader
+			enforce: 'pre', // preload the  loader
 			exclude: /node_modules/, // exclude any and all files in the node_modules folder
-			use: [
-				{
-					loader: 'jshint-loader'
-				}
-			]
-		}, {
+      use: [{
+        loader: 'eslint-loader'
+      }]
+    }, { // FOR JS FILES
 			test: /\.js$/,
 			loader: 'babel-loader',
 			query: {
-				presets: ['es2015']
+				presets: ['@babel/preset-env']
 			},
-		}, {
-			test: /\.styl/,
-			use: ExtractTextPlugin.extract({
-				fallback: 'style-loader',
-				use: [{
-					loader: 'css-loader',
-					options: {
-						minimize: true,
-						url: false,
-					},
-				}, {
-					loader: 'stylus-loader',
-					options: {
-						preferPathResolver: 'webpack', // Faster
-						'resolve url': true,
-					},
-				}],
-			})
-		}, {
+    }, { // FOR STYL FILES
+      test: /\.styl/,
+      use: [{
+        loader: 'style-loader',
+      }, {
+        loader: 'css-loader',
+        options: {
+          minimize: true,
+          url: false,
+        }
+      }, {
+        loader: 'stylus-loader',
+        options: {
+          preferPathResolver: 'webpack', // Faster
+          'resolve url': true,
+        }
+      }],
+    }, {
 			test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
 			loader: 'file-loader',
 		}],
 	},
 
 	plugins: [
-		new ExtractTextPlugin('../css/site.css'),
 		// Copy the images folder and optimize all the images
 		new CopyWebpackPlugin([
 			{
