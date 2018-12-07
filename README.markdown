@@ -30,7 +30,7 @@ git init
 
 - `yarn`
 - check composer.json if you want moment or other things
-- `composer install`
+- `composer install --prefer-dist`
 - `webpack`
 
 ## Add new packages
