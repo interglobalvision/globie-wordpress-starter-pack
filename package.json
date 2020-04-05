@@ -38,5 +38,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }

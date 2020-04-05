@@ -1,7 +1,8 @@
 /* jshint esversion: 6, browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, document */
+/* global document */
 
 // Import dependencies
+import $ from 'jquery';
 import lazySizes from 'lazysizes';
 
 // Import style
@@ -18,12 +19,10 @@ class Site {
   }
 
   onResize() {
-
   }
 
   onReady() {
     lazySizes.init();
-
   }
 
   fixWidows() {
