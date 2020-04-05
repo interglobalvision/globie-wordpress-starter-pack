@@ -7,7 +7,7 @@
     }
   ],
   "require": {
-    "cmb2/cmb2": "^2.2.5",
+    "cmb2/cmb2": "^2.7.0",
     "fightbulc/moment": "*",
     "alexis-magina/cmb2-field-post-search-ajax": "dev-master"
   }
