@@ -53,7 +53,18 @@ function register_cpt_project() {
     'query_var' => true,
     'can_export' => true,
     'rewrite' => true,
-    'capability_type' => 'post'
+    'capability_type' => 'post',
+
+    'show_in_rest'        => true,
+    /*'template'          => array(
+      array( 'core/heading', array(
+        'level' => '5', 'content' => 'Some List' ) ),
+      array( 'core/list' ),
+      array( 'core/heading', array(
+        'level' => '5', 'content' => 'Some Text' ) ),
+      array( 'core/paragraph' )
+    ),*/
+		//'template_lock'     => 'all',
   );
 
   register_post_type( 'project', $args );
