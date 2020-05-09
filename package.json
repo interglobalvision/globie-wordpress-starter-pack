@@ -40,7 +40,7 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
-    "globie-styl-library": "1.0.7",
+    "globie-styl-library": "1.0.8",
     "jquery": "^3.4.1"
   }
 }
