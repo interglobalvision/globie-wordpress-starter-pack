@@ -13,7 +13,7 @@ function add_slug_body_class( $classes ) {
 add_filter( 'body_class', 'add_slug_body_class' );
 
 // Custom img attributes to be compatible with lazysize
-function add_lazysize_on_srcset($attr) {
+function add_lazysize_on_srcset($attr, $attachment, $size) {
 
   if (!is_admin()) {
 
@@ -22,6 +22,8 @@ function add_lazysize_on_srcset($attr) {
       unset($attr['data-no-lazysizes']);
       return $attr;
     }
+
+    $image = wp_get_attachment_image_src($attachment->ID, $size);
 
     // Add lazysize class
     $attr['class'] .= ' lazyload';
@@ -37,11 +39,11 @@ function add_lazysize_on_srcset($attr) {
     }
 
     // Set default to white blank
-    $attr['src'] = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAQAAABTNcdGAAAAC0lEQVR42mNkgAIAABIAAmXG3J8AAAAASUVORK5CYII=';
+    $attr['src'] = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' . $image[1] . ' ' . $image[2] . '"%3E%3C/svg%3E';
 
   }
 
   return $attr;
 
 }
-add_filter('wp_get_attachment_image_attributes', 'add_lazysize_on_srcset');
+add_filter('wp_get_attachment_image_attributes', 'add_lazysize_on_srcset', 10, 3);
