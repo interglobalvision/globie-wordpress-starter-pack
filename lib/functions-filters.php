@@ -38,8 +38,10 @@ function add_lazysize_on_srcset($attr, $attachment, $size) {
       $attr['data-src'] = $attr['src'];
     }
 
+    $svg_color = 'transparent';
+
     // Set default to white blank
-    $attr['src'] = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' . $image[1] . ' ' . $image[2] . '"%3E%3C/svg%3E';
+    $attr['src'] = 'data:image/svg+xml,%3Csvg style="background-color:' . $svg_color . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' . $image[1] . ' ' . $image[2] . '"%3E%3C/svg%3E';
 
   }
 
