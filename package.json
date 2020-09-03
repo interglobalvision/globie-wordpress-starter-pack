@@ -33,7 +33,7 @@
     "jshint-loader": "^0.8.4",
     "jshint-stylish": "~2.2.1",
     "kouto-swiss": "^1.1.0",
-    "lazysizes": "^4.0.1",
+    "lazysizes": "^5.2.1",
     "style-loader": "^0.19.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
